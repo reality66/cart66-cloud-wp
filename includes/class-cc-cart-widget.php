@@ -3,11 +3,14 @@
 class CC_Cart_Widget extends WP_Widget {
 
     public function __construct() {
-        $description = __( 'Show shopping cart in your sidebar', 'cart66' );
-        $widget_ops = array('classname' => 'CC_Cart_Widget', 'description' => $description);
-
-        $description = __( 'Cart66 Cloud Shopping Cart', 'cart66' );
-        $this->WP_Widget('CC_Cart_Widget', $description, $widget_ops);
+        parent::__construct (
+            'CC_Cart_Widget',
+            __( 'Cart66 Cloud Shopping Cart', 'cart66' ),
+            array(
+                'classname' => 'CC_Cart_Widget',
+                'description' => __( 'Show shopping cart in your sidebar', 'cart66' ),
+            )
+        );
 
         // Add actions for ajax rendering for cart widget
         add_action('wp_ajax_render_cart66_cart_widget', array('CC_Cart_Widget', 'ajax_render_content'));

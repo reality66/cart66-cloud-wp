@@ -49,7 +49,7 @@ function cc_page_has_products() {
     if( in_array( $post_type, $product_post_types ) ) {
         $has_products = true;
         CC_Log::write( "This is a page with products because it is a post type known to hold products: $post_type\n" . print_r( $product_post_types, true ) );
-    } 
+    }
 
     // Check if this is a post containing a cart66 product shortcode
     elseif ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'cc_product' )  ) {
@@ -148,7 +148,7 @@ function cc_theme_support_notice() {
     if ( ! current_theme_supports( 'cart66' ) && 'yes' == $product_templates && CC_Admin_Notifications::show( 'cart66_theme_support' ) ) {
         ?>
         <div class="error">
-            <p> 
+            <p>
                 <?php _e( 'The active theme does not declare support for the Cart66 product post type. ', 'cart66' ); ?> <br />
                 <?php _e( 'Here are some times for <a href="http://help.cart66.com/article/330-fixing-layout-problems">fixing layout problems</a> and making <a href="http://help.cart66.com/article/329-custom-page-layouts">custom page layouts</a>.', 'cart66'); ?><br/>
                 <a href="<?php echo add_query_arg( 'cc-task', 'dismiss_notification_theme_support' ); ?>" class="button" style="margin-top: 10px;" ><?php _e('Dismiss this message', 'cart66'); ?></a>
@@ -213,23 +213,3 @@ function cc_migration_notice() {
 function cc_reset_theme_notices() {
     CC_Admin_Notifications::clear( 'cart66_theme_support' );
 }
-
-function cc_updater_init() {
-
-	/* Load Plugin Updater */
-	require_once CC_PATH . 'includes/plugin-updater.php';
-
-	/* Updater Config */
-	$config = array(
-		'base'      => plugin_basename( CC_PLUGIN_FILE ), //required
-		'dashboard' => false,
-		'username'  => false,
-		'key'       => '',
-		'repo_uri'  => 'http://cart66.com',  //required
-		'repo_slug' => 'cart66-cloud',  //required
-	);
-
-	/* Load Updater Class */
-	new Cart66_Cloud_Plugin_Updater( $config );
-}
-
