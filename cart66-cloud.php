@@ -31,4 +31,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 include_once( 'includes/class-cart66-cloud.php' );
 
-add_action( 'plugins_loaded', array( 'Cart66_Cloud', 'get_instance' ) );
+add_action( 'plugins_loaded', array( 'Cart66_Cloud', 'get_instance' ), 10 );

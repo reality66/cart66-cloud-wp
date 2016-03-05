@@ -16,6 +16,7 @@ settings_errors( 'cart66_main_settings_group' );
     <h2 class="nav-tab-wrapper">
         <a href="?page=cart66&tab=main-settings" class="nav-tab <?php echo $active_class['main-settings']; ?>">Main</a>
         <a href="?page=cart66&tab=post-type-settings" class="nav-tab <?php echo $active_class['post-type-settings']; ?>">Advanced</a>
+        <a href="?page=cart66&tab=info" class="nav-tab <?php echo $active_class['info']; ?>">System Information</a>
     </h2>
 </div>
 
@@ -28,6 +29,9 @@ settings_errors( 'cart66_main_settings_group' );
         } elseif ( 'post-type-settings' == $active_tab ) {
             do_settings_sections('cart66_post_type');       // menu_slug used in add_settings_section
             settings_fields('cart66_post_type_settings');   // option_group
+        }
+        elseif ( 'info' == $active_tab ) {
+            include ( 'html-system-info.php' );
         }
 
         // Submit button.

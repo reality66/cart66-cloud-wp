@@ -5,7 +5,7 @@ class CC_Admin {
     public static $tabs;
 
     public function __construct() {
-        self::$tabs = array( 'main-settings', 'post-type-settings' );
+        self::$tabs = array( 'main-settings', 'post-type-settings', 'info' );
 
         // Initialize the main settings for Cart66
         CC_Admin_Main_Settings::init( 'cart66', 'cart66_main_settings' );
@@ -22,10 +22,10 @@ class CC_Admin {
 
         // Check for the page slurp page
         add_action( 'after_setup_theme', array( $this, 'check_page_slurp_exists' ) );
-        
+
         // Check for permalinks
         add_action( 'after_setup_theme', array( $this, 'check_permalinks' ) );
-        
+
         // Check for cart66 1.x migration
         add_action( 'after_setup_theme', array( $this, 'check_migration' ) );
     }
@@ -112,7 +112,7 @@ class CC_Admin {
             add_action( 'admin_notices', 'cc_permalinks_notice' );
         }
     }
-    
+
     public function check_migration() {
         if ( get_option('cc_subdomain') ) {
             add_action( 'admin_notices', 'cc_migration_notice' );

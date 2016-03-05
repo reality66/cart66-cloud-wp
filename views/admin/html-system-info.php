@@ -1,0 +1,49 @@
+<?php
+$ch = curl_init('https://www.howsmyssl.com/a/check');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$data = curl_exec($ch);
+curl_close($ch);
+
+$json = json_decode($data);
+$tls_version = $json->tls_version;
+?>
+<div class="card">
+    <table>
+        <tr>
+            <th>TLS Version</th>
+            <td><?php echo $tls_version ?></td>
+        </tr>
+    </table>
+</div>
+
+
+<?php
+include_once( CC_PATH . 'includes/lib/simple-dom-parser.php' );
+
+ob_start();
+phpinfo();
+$content = ob_get_clean();
+
+$html = new simple_html_dom();
+$html->load( $content );
+$body = $html->find('body', 0);
+
+$styles = "<style type='text/css'>
+pre {margin: 0; font-family: monospace;}
+.center {text-align: center;}
+.center table {margin: 1em auto; text-align: left;}
+.center th {text-align: center !important;}
+h1 {font-size: 150%;}
+h2 {font-size: 125%;}
+.p {text-align: left;}
+.e {background-color: #ccf; width: 300px; font-weight: bold; padding: 5px 15px; }
+.h {background-color: transparent; font-weight: bold;}
+.v {background-color: #ddd; max-width: 300px; overflow-x: auto; padding: 5px; }
+.v i {color: #999;}
+.v td p { padding: 0px 20px; }
+</style>";
+?>
+
+<div class="card" style="width: 100%; max-width: 1000px;">
+    <?php echo $styles . $body; ?>
+</div>
