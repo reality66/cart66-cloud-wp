@@ -1,3 +1,4 @@
-/tests export-ignore
-.gitignore export-ignore
-log.txt export-ignore
+/tests       export-ignore
+.gitignore   export-ignore
+log.txt      export-ignore
+help.txt     export-ignore

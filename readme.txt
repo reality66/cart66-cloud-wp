@@ -1,10 +1,10 @@
 === Cart66 Cloud :: Ecommerce with security ===
-Contributors: reality66,
+Contributors: Reality66,
 Donate link: http://cart66.com
 Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales, shopping cart, cloud, sky
 Requires at least: 3.2
-Tested up to: 4.2.2
-Stable tag: 2.0.6
+Tested up to: 4.4.2
+Stable tag: 2.0.7
 
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -28,7 +28,7 @@ Sell digital files, ship products, and even sell memberships and subscriptions. 
 Cart66 Cloud has been updated with some great new features!
 
 - Automatically create product pages in WordPress
-- Built-in product catalog with unlimted categories
+- Built-in product catalog with unlimited categories
 - Built-in image gallery for products
 - Set up featured products
 
@@ -65,7 +65,7 @@ Cart66 is still the most secure way to sell anything with WordPress and continue
 == Screenshots ==
 1. Cart66 product catalog showing featured products
 2. Cart66 product image gallery with zoom
-3. Products: No matter what type of products you want to sell, weâ€™ve got you covered. No extra paid extensions or add-ons needed.
+3. Products: No matter what type of products you want to sell, we've got you covered. No extra paid extensions or add-ons needed.
 4. Product details: unlimited variations, attach files, set custom text for receipts and much more...
 5. Digital products: Upload and attach one or more files to a product. We'll securely store and deliver your files too!
 6. Live carts: Watch people shop in real-time
@@ -78,7 +78,7 @@ Cart66 is still the most secure way to sell anything with WordPress and continue
 = Minimum Requirements =
 
 * WordPress 3.2 or greater
-* PHP version 5.2.4 or greater
+* PHP version 5.4 or greater
 * MySQL version 5.0 or greater
 
 = Automatic installation =
@@ -125,6 +125,11 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 == Changelog ==
 
+= 2.0.7 =
+
+- New: Introduce the system information tab in Cart66 Cloud WordPress admin
+- Update: Refactor main plugin file for faster loading
+
 = 2.0.6 - 7/21/2015 =
 
 - New: Added filter for receipt page content cc_receipt_content
@@ -136,7 +141,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 = 2.0.4 - 3/31/2015 =
 
 - Update: CC_Library class reintroduced to improve backwards compatibility
-- Update: Improvements to enqueing clients side scripts
+- Update: Improvements to enqueuing clients side scripts
 - Update: Add option to use, hide, or disable Cart66 custom post type
 - Update: Further improvements to rewrite rule initialization during activation
 
@@ -158,7 +163,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 - New: Added view for product pages that have no images in the gallery
 - New: Added product post type selector to enable products to be shown on other custom post types
 - Updated: If there are no product images or featured images, do not show the gallery at all
-- Updated: Added legacy URL formats for sign_in, sign_out, view_cart, andn order_history
+- Updated: Added legacy URL formats for sign_in, sign_out, view_cart, and order_history
 - Fixed: cc_cart_item_count shortcode
 - Fixed: cc_cart_subtotal shortcode
 - Fixed: cc_product_link shortcode
@@ -229,14 +234,14 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 - New: Added cc_product_price shortcode
 - Fixed: Dynamic price updates work with server side loaded as well as client side loaded product forms
 - Fixed: Add to cart links generating PHP notices prevent redirect to checkout page
-- Fixed: Text field variation values that include speical characters like quotes are no longer escaped with slashes
+- Fixed: Text field variation values that include special characters like quotes are no longer escaped with slashes
 
 = 1.6.6 - 10/24/2013 =
 
 - New: Added debugging tool to test for server's PHP settings for cURL requests
 - Updated: Changed the default colors for the AJAX success message after adding a product to the cart to gray instead of mint green
 - Updated: Added "Not set" status message when the store subdomain is not yet cached in the WordPress database
-- Updated: Improve javascript compatability for IE8
+- Updated: Improve JavaScript compatibility for IE8
 - Updated: Adding additional translation echo functions
 - Updated: Cleaned up PHP notices
 
@@ -253,8 +258,8 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 = 1.6.3 - 8/30/2013 =
 
-- Updated: Improved perfomance by storing custom subdomain in the WordPress database
-- Updated: Option to use server side or client side product loading. Client side product loading is faster but requires javascript.
+- Updated: Improved performance by storing custom subdomain in the WordPress database
+- Updated: Option to use server side or client side product loading. Client side product loading is faster but requires JavaScript.
 
 = 1.6.2 - 8/26/2013 =
 
@@ -313,7 +318,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 = 1.0.2 - 11/27/2012 =
 
-- Fixing problem where SSL verification would fail on some servers preventing successful api communication
+- Fixing problem where SSL verification would fail on some servers preventing successful API communication
 
 = 1.0.1 - 11/26/2012 =
 
