@@ -13,11 +13,11 @@ Cart66 Cloud is everything you need for a secure and PCI compliant store. You do
 
 == Description ==
 
-Best Value + Best Security
+A secure and sophisticated approach to WordPress e-commerce.
 
 For less than you would pay for a payment gateway add-on and an SSL certificate you get a complete, PCI compliant, WordPress e-commerce system.
 
-This plugin connects your WordPress site to Cart66 Cloud which only costs $95/year. 
+This plugin connects your WordPress site to Cart66 Cloud which only costs $95/year.
 
 Sell digital files, ship products, and even sell memberships and subscriptions. Cart66 Cloud includes a built-in recurring billing engine and support for over 70 payment gateways. Membership management features to restrict access to content on your site is included too! Unlike other e-commerce plugins where you have to buy add-ons and worry about SSL certificates and security scans, Cart66 Cloud gives you everything you need all in one easy to use package. We even handle all of the [requirements for PCI compliance](http://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance") for you so you don't have to do anything but start selling.
 
@@ -25,7 +25,7 @@ Sell digital files, ship products, and even sell memberships and subscriptions. 
 
 = Features =
 
-Cart66 Cloud has been updated with some great new features! 
+Cart66 Cloud has been updated with some great new features!
 
 - Automatically create product pages in WordPress
 - Built-in product catalog with unlimted categories
@@ -42,7 +42,7 @@ If you only watch one video, watch this one and see how easy it is to create pro
 
 [youtube https://www.youtube.com/watch?v=2GKYWaH6JDM]
 
-You do not need a special e-commerce theme to use Cart66. All of these features can easily be set up in any theme. Take a look at the free, default [Twenty Fifteen theme with Cart66](http://demo.cart66.com/twentyfifteen/) 
+You do not need a special e-commerce theme to use Cart66. All of these features can easily be set up in any theme. Take a look at the free, default [Twenty Fifteen theme with Cart66](http://demo.cart66.com/twentyfifteen/)
 
 Cart66 is still the most secure way to sell anything with WordPress and continues to provide a full set of e-commerce features all together in one awesome bundle:
 
@@ -125,7 +125,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 == Changelog ==
 
-= 2.0.6 - 7/21/2015 = 
+= 2.0.6 - 7/21/2015 =
 
 - New: Added filter for receipt page content cc_receipt_content
 
@@ -152,7 +152,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 - Update: Add notice about Cart66 Members add-on when upgrading to Cart66 2.0
 
 
-= 2.0.2 - 3/18/2015 = 
+= 2.0.2 - 3/18/2015 =
 
 - New: Use featured image for the catalog grid if no product images are provided
 - New: Added view for product pages that have no images in the gallery
@@ -173,15 +173,15 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 - New: Product catalog with unlimited categories
 - New: Product image gallery
-- New: Product post type 
-- New: Product pages automatically created when products are created 
+- New: Product post type
+- New: Product pages automatically created when products are created
 - New: Improved communication with secure dashboard
 - New: Easily duplicate products with one click
 - New: Customize button text for each product
 - New: Taxamo integration to handle new VAT requirements
 - New: Hurricane affiliate software integration
 - New: Page templates available for theme developers
-- Changed: Membership access managed in new free Cart66 Members add-on 
+- Changed: Membership access managed in new free Cart66 Members add-on
 - Changed: Code refactored to meet WordPress coding standards
 
 = 1.7.3 - 8/7/2014 =
@@ -272,7 +272,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 - New: [Post category restriction](http://cart66.com/cloud-docs/restrict-access-to-post-categories/)
 - New: Set [access denied page for restricted Pages](http://cart66.com/cloud-docs/content-restriction-for-pages-vs-posts/)
 - Update: Major speed enhancements making pages load over 10x faster especially when multiple products are on the same page
-- Update: Speed improvements by significantly reducing in the number of callbacks to the Cart66 Cloud 
+- Update: Speed improvements by significantly reducing in the number of callbacks to the Cart66 Cloud
 - Fixed: Cleaning up a bunch of PHP notices when running in debug/strict mode
 
 = 1.5.3 - 7/3/2013 =
