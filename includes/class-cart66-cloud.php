@@ -140,6 +140,10 @@ final class Cart66_Cloud {
         return CC_PATH;
     }
 
+    public function plugin_url() {
+        return CC_URL;
+    }
+
     /**
      * Get the template path
      *
@@ -149,4 +153,7 @@ final class Cart66_Cloud {
         return apply_filters( 'cart66_template_path', 'cart66/' );
     }
 
+    public function version_number() {
+        return CC_VERSION_NUMBER;
+    }
 }

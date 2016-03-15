@@ -11,4 +11,3 @@ class Test_Cloud_Messenger extends LB_Test {
 }
 
 Test_Cloud_Messenger::run_tests();
-

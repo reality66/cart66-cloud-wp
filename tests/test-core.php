@@ -4,10 +4,10 @@ class Cart66_Core_Tests extends LB_Test {
 
     public $cart66;
 
-    public $version_number = '1.8';
+    public $version_number = '2.0.7';
 
     public function before_tests() {
-        $this->cart66 = Cart66_Cloud::instance();
+        $this->cart66 = Cart66_Cloud::get_instance();
     }
 
     /**
@@ -28,15 +28,15 @@ class Cart66_Core_Tests extends LB_Test {
 
     public function test_plugin_path_should_end_with_plugin_root_directory() {
         $result = LB_Should::end_with( $this->cart66->plugin_path(), '/wp-content/plugins/cart66-cloud/' );
-        $this->check( $result, "Path was: $path" );
+        $this->check( $result, "Path was: $result" );
     }
 
     public function test_plugin_url_should_end_with_plugin_root_directory() {
         $result = LB_Should::end_with( $this->cart66->plugin_url(), '/wp-content/plugins/cart66-cloud/' );
-        $this->check( $result, "URL was: $path" );
+        $this->check( $result, "URL was: $result" );
     }
 
-    public function test_getting_subdomain_from_cloud() {
+    public function _test_getting_subdomain_from_cloud() {
 
         // Put the secret key in the WordPress options table
         $settings = array( 'secret_key' => 's_2d53b0386171cd0f47ad040d' );

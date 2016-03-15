@@ -1,5 +1,5 @@
 <?php
-$url = 'http://wpdev.blue.hopto.me:8888/cc-api/v1/products';
+$url = 'http://cart66.leeh.blue:8080/cc-api/v1/products';
 $data = array('sku' => 'auto-01');
 
 // use key 'http' even if you send the request to https://...

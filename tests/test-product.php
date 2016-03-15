@@ -16,7 +16,7 @@ class Test_Product extends LB_Test {
         $this->check( null == $post_id, "Expecting the page id to be null but found $post_id" );
     }
 
-    public function test_attach_image_to_post() {
+    public function _test_attach_image_to_post() {
         $post_id = 96; // Bose SoundLink on wpdev
         $url =  'http://cart66-com.s3.amazonaws.com/images/fast-track/black-tee.png';
         $meta_key = '_product_image_2';
@@ -31,5 +31,3 @@ class Test_Product extends LB_Test {
 }
 
 Test_Product::run_tests();
-
-
