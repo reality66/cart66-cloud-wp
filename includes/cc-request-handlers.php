@@ -1,6 +1,6 @@
 <?php
 
-/** 
+/**
  * Handle admin tasks for cart66
  */
 function cc_task_dispatcher() {
@@ -61,7 +61,7 @@ function cc_route_handler() {
 
         if ( isset( $_SERVER['PHP_AUTH_USER'] ) ) {
             // Authenticated requests
-            if ( cc_auth_verify_secret_key( $_SERVER['PHP_AUTH_USER'] ) ) { 
+            if ( cc_auth_verify_secret_key( $_SERVER['PHP_AUTH_USER'] ) ) {
                 switch ( $action ) {
                     case 'product-update':
                         cc_auth_product_update();
@@ -83,7 +83,7 @@ function cc_route_handler() {
             }
 
         }
-        else { 
+        else {
             // Open requests
             switch ( $action ) {
                 case 'sign-in':
@@ -92,7 +92,7 @@ function cc_route_handler() {
                     break;
                 case 'sign-out':
                     if( class_exists( 'CM_Visitor' ) ) {
-                        $visitor = new CM_Visitor();
+                        $visitor = CM_Visitor::get_instance();
                         $visitor->sign_out();
                     }
                     wp_redirect( $url->sign_out() );
@@ -143,7 +143,7 @@ function cc_route_handler() {
                             $main_settings = CC_Admin_Setting::get_options( 'cart66_main_settings' );
                             if ( ! isset( $main_settings['secret_key'] ) || empty( $main_settings['secret_key'] ) ) {
                                 $main_settings['secret_key'] = $settings->secret_key;
-                                CC_Admin_Setting::update_options( 'cart66_main_settings', $main_settings );                        
+                                CC_Admin_Setting::update_options( 'cart66_main_settings', $main_settings );
                                 status_header('201');
                             }
                             else {
@@ -154,7 +154,7 @@ function cc_route_handler() {
 
                         exit();
                     }
-                    break; 
+                    break;
                 default:
                     CC_Log::write( "Unknown open request: $action" );
                     status_header( '404' );
