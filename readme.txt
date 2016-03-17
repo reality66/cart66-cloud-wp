@@ -2,9 +2,9 @@
 Contributors: Reality66,
 Donate link: http://cart66.com
 Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales, shopping cart, cloud, sky
-Requires at least: 3.2
+Requires at least: 3.5
 Tested up to: 4.4.2
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -52,7 +52,7 @@ Cart66 is still the most secure way to sell anything with WordPress and continue
 - Sell digital files and we'll securely host and deliver them for you
 - Sell physical products
 - Create products with unlimited variations
-- Tons of payment gateways included (77 gateways in 82 countries and counting...)
+- Tons of payment gateways included (102 gateways in 102 countries and counting...)
 - Your secure pages are skinned with your WordPress theme so they look exactly like the rest of your WordPress site
 - Taxes
 - Shipping
@@ -124,6 +124,10 @@ PageSlurp is the technology that we invented to provide a secure and PCI complia
 PCI Compliance is a set of requirements that your business needs to meet in order to accept credit card payments. If you are using Cart66 Cloud for your e-commerce, then your website is PCI compliant. If you are not using Cart66 Cloud then you need to handle all of the PCI requirements on your own. Becoming PCI compliant on your own is very expensive and challenging. For more information about PCI compliance, see [What you need to know about PCI compliance](http://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance").
 
 == Changelog ==
+
+= 2.0.8 =
+
+- Update: Change all references to the Cart66 Cloud Members Visitor class to use the improved static syntax
 
 = 2.0.7 =
 
@@ -329,6 +333,10 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 - Initial release of the Cart66 Cloud plugin for WordPress e-commerce
 
 == Upgrade Notice ==
+
+= 2.0.8 =
+
+If you are using the Cart66 Cloud Members plguin, this update expects Cart66 Cloud Members versoin 1.1.4 or later.
 
 = 2.0 =
 
