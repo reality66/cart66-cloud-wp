@@ -163,7 +163,7 @@ class CC_Library {
         $has_permission = false;
 
         if ( class_exists( 'CM_Visitor' ) ) {
-            $visitor = new CM_Visitor();
+            $visitor = CM_Visitor::get_instance();
             $has_permission = $visitor->has_permission( $skus, $days_in );
         }
 
@@ -184,7 +184,7 @@ class CC_Library {
     public function get_user_data( $token ) {
         $data = array();
         if ( class_exists( 'CM_Visitor' ) ) {
-            $visitor = new CM_Visitor();
+            $visitor = CM_Visitor::get_instance();
             $data = $visitor->get_user_data();
         }
         return $data;

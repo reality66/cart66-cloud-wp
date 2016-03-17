@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * This is a class of helper methods to make accessing data in Cart66 Cloud easier, epecially for theme development
  */
@@ -6,7 +6,7 @@ class CC {
 
     /**
      * Return the number of items in the current visitor's shopping cart
-     * 
+     *
      * @return int
      */
     public static function cart_item_count() {
@@ -44,19 +44,19 @@ class CC {
      */
     public static function is_cart_empty() {
         $count = self::cart_item_count();
-        return $count == 0; 
+        return $count == 0;
     }
 
     /**
      * Return true if the current visitor is logged in, otherwise return false.
-     * 
+     *
      * @return boolean
      */
     public static function is_logged_in() {
         $is_logged_in = false;
 
         if ( class_exists( 'CM_Visitor' ) ) {
-            $visitor = new CM_Visitor();
+            $visitor = CM_Visitor::get_instance();
             $is_logged_in = $visitor->is_logged_in();
         }
 
@@ -72,7 +72,7 @@ class CC {
         $name = '';
 
         if( class_exists( 'CM_Visitor' ) ) {
-            $visitor = new CM_Visitor();
+            $visitor = CM_Visitor::get_instance();
             $first_name = $visitor->get_first_name();
             $last_name = $visitor->get_last_name();
             $name = $first_name . ' ' . $last_name;
@@ -85,7 +85,7 @@ class CC {
         $first_name = '';
 
         if ( class_exists( 'CM_Visitor' ) ) {
-            $visitor = new CM_Visitor();
+            $visitor = CM_Visitor::get_instance();
             $first_name = $visitor->get_first_name();
         }
 
@@ -96,7 +96,7 @@ class CC {
         $last_name = '';
 
         if ( class_exists( 'CM_Visitor' ) ) {
-            $visitor = new CM_Visitor();
+            $visitor = CM_Visitor::get_instance();
             $last_name = $visitor->get_last_name();
         }
 
@@ -107,7 +107,7 @@ class CC {
         $email = '';
 
         if ( class_exists( 'CM_Visitor' ) ) {
-            $visitor = new CM_Visitor();
+            $visitor = CM_Visitor::get_instance();
             $email = $visitor->get_email();
         }
 
@@ -118,7 +118,7 @@ class CC {
         $phone_number = '';
 
         if ( class_exists( 'CM_Visitor' ) ) {
-            $visitor = new CM_Visitor();
+            $visitor = CM_Visitor::get_instance();
             $phone_number = $visitor->get_phone_number();
         }
 
@@ -142,7 +142,7 @@ class CC {
                         CC_Log::write("Getting price for product: " . print_r($p, TRUE));
                         $price = $p['on_sale'] == 1 ? $p['formatted_sale_price'] : $p['formatted_price'];
                     }
-                }    
+                }
             }
             catch (CC_Exception_API $e) {
                 $price = "Error: " . $e->getMessage();
