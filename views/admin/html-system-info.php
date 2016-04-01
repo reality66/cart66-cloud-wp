@@ -18,15 +18,22 @@ $tls_version = $json->tls_version;
 
 
 <?php
-include_once( CC_PATH . 'includes/lib/simple-dom-parser.php' );
 
 ob_start();
 phpinfo();
 $content = ob_get_clean();
 
-$html = new simple_html_dom();
-$html->load( $content );
-$body = $html->find('body', 0);
+$doc = new DOMDocument;
+$mock = new DOMDocument;
+
+$doc->loadHTML( $content );
+$body = $doc->getElementsByTagName('body')->item(0);
+
+foreach ($body->childNodes as $child){
+    $mock->appendChild($mock->importNode($child, true));
+}
+
+$html = $mock->saveHTML();
 
 $styles = "<style type='text/css'>
 pre {margin: 0; font-family: monospace;}
@@ -41,9 +48,10 @@ h2 {font-size: 125%;}
 .v {background-color: #ddd; max-width: 300px; overflow-x: auto; padding: 5px; }
 .v i {color: #999;}
 .v td p { padding: 0px 20px; }
+a img { display: none; }
 </style>";
 ?>
 
 <div class="card" style="width: 100%; max-width: 1000px;">
-    <?php echo $styles . $body; ?>
+    <?php echo $styles . $html; ?>
 </div>
