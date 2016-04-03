@@ -9,7 +9,7 @@ Author URI: http://www.reality66.com
 
 -------------------------------------------------------------------------
 Cart66 Cloud
-Copyright 2015  Reality66
+Copyright 2016  Reality66
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
