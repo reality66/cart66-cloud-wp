@@ -127,8 +127,10 @@ function cc_enqueue_cart66_styles() {
  * Enqueue featherlight feature for gallery
  */
 function cc_enqueue_featherlight() {
-    wp_enqueue_style ( 'featherlight-styles', '//cdn.rawgit.com/noelboss/featherlight/1.2.2/release/featherlight.min.css' );
-    wp_enqueue_script( 'featherlight', '//cdn.rawgit.com/noelboss/featherlight/1.2.2/release/featherlight.min.js', array( 'jquery' ) );
+    if ( cc_page_has_products() ) {
+        wp_enqueue_style ( 'featherlight-styles', '//cdn.rawgit.com/noelboss/featherlight/1.2.2/release/featherlight.min.css' );
+        wp_enqueue_script( 'featherlight', '//cdn.rawgit.com/noelboss/featherlight/1.2.2/release/featherlight.min.js', array( 'jquery' ), '', true );
+    }
 }
 
 /**
