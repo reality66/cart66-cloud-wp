@@ -17,7 +17,7 @@ A secure and sophisticated approach to WordPress e-commerce.
 
 For less than you would pay for a payment gateway add-on and an SSL certificate you get a complete, PCI compliant, WordPress e-commerce system.
 
-This plugin connects your WordPress site to Cart66 Cloud which only costs $95/year.
+This plugin connects your WordPress site to Cart66 Cloud.
 
 Sell digital files, ship products, and even sell memberships and subscriptions. Cart66 Cloud includes a built-in recurring billing engine and support for over 70 payment gateways. Membership management features to restrict access to content on your site is included too! Unlike other e-commerce plugins where you have to buy add-ons and worry about SSL certificates and security scans, Cart66 Cloud gives you everything you need all in one easy to use package. We even handle all of the [requirements for PCI compliance](http://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance") for you so you don't have to do anything but start selling.
 
@@ -124,6 +124,10 @@ PageSlurp is the technology that we invented to provide a secure and PCI complia
 PCI Compliance is a set of requirements that your business needs to meet in order to accept credit card payments. If you are using Cart66 Cloud for your e-commerce, then your website is PCI compliant. If you are not using Cart66 Cloud then you need to handle all of the PCI requirements on your own. Becoming PCI compliant on your own is very expensive and challenging. For more information about PCI compliance, see [What you need to know about PCI compliance](http://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance").
 
 == Changelog ==
+
+= 2.0.10 =
+
+- Update: Improve load time by optimizing enqued scripts used for product image gallery
 
 = 2.0.9 =
 
