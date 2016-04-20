@@ -4,7 +4,7 @@ Donate link: http://cart66.com
 Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales, shopping cart, cloud, sky
 Requires at least: 3.5
 Tested up to: 4.5
-Stable tag: 2.0.9
+Stable tag: 2.0.10
 
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -15,11 +15,20 @@ Cart66 Cloud is everything you need for a secure and PCI compliant store. You do
 
 A secure and sophisticated approach to WordPress e-commerce.
 
-For less than you would pay for a payment gateway add-on and an SSL certificate you get a complete, PCI compliant, WordPress e-commerce system.
+Cart66 is the most secure e-commerce platform for WordPress. Best of all, Cart66 handles all the security for you so you can focus entirely on your business.
 
-This plugin connects your WordPress site to Cart66 Cloud.
+Cart66 is the only WordPress e-commerce option that makes your store PCI compliant.
 
-Sell digital files, ship products, and even sell memberships and subscriptions. Cart66 Cloud includes a built-in recurring billing engine and support for over 70 payment gateways. Membership management features to restrict access to content on your site is included too! Unlike other e-commerce plugins where you have to buy add-ons and worry about SSL certificates and security scans, Cart66 Cloud gives you everything you need all in one easy to use package. We even handle all of the [requirements for PCI compliance](http://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance") for you so you don't have to do anything but start selling.
+Watch these videos to see how to:
+
+- [Run an online magazine subscription](http://cart66.com/blog/wordpress-magazine-plugin/)
+- [Accept online donations](http://cart66.com/blog/accept-donations-online-wordpress/)
+- [Sell music on WordPress](http://cart66.com/blog/sell-music-on-wordpress/)
+- [Manage inventory](http://cart66.com/blog/inventory-management/)
+- [Sell products on a payment plan](http://cart66.com/blog/selling-payment-plans-wordpress/)
+- [Automate sales follow up emails](http://cart66.com/blog/sales-follow-up-email/)
+
+Sell digital files, ship products, sell music, accept donations, and even sell memberships and subscriptions. Cart66 Cloud includes a built-in recurring billing engine and support for over 100 payment gateways. Membership management features to restrict access to content on your site is included too! Unlike other e-commerce plugins where you have to buy add-ons and worry about SSL certificates and security scans, Cart66 Cloud gives you everything you need all in one easy to use package. We even handle all of the [requirements for PCI compliance](http://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance") for you so you don't have to do anything but start selling.
 
 [vimeo http://vimeo.com/83884705]
 
@@ -27,6 +36,8 @@ Sell digital files, ship products, and even sell memberships and subscriptions. 
 
 Cart66 Cloud has been updated with some great new features!
 
+- Inventory management
+- Google Analytics for ecommerce
 - Automatically create product pages in WordPress
 - Built-in product catalog with unlimited categories
 - Built-in image gallery for products
@@ -128,6 +139,8 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 = 2.0.10 =
 
 - Update: Improve load time by optimizing enqued scripts used for product image gallery
+- Update: Upgrade select2 library used for product searches
+- Fix: Fixed Cart66 Product modal display issues in the page/post editor caused by some themes including Divi
 
 = 2.0.9 =
 
