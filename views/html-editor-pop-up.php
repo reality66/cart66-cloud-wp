@@ -1,3 +1,12 @@
+<style type="text/css">
+    .select2-close-mask{
+        z-index: 2000001;
+    }
+    .select2-dropdown{
+        z-index: 2000002;
+    }
+</style>
+
 <script type="text/javascript">
     function cc_insert_product_shortcode(){
         var product_info = JSON.parse(jQuery('#cc_product_id').val());
@@ -14,7 +23,6 @@
     }
 
     jQuery(document).ready(function($) {
-        /*
         $('#cc_product_id').select2({
             width: '100%',
             minimumInputLength: 2,
@@ -28,15 +36,10 @@
                         search: term
                     };
                 },
-                results: function (data, page) {
+                processResults: function (data, page) {
                   return { results: data };
                 }
             }
-        });
-        */
-        $('#cc_product_id').select2({
-            width: '100%',
-            placeholder: 'Type product name here',
         });
     });
 </script>
@@ -56,10 +59,7 @@
                             <th scope="row"><label for="cc_product_id">Products</label></th>
                             <td>
                                 <select name="cc_product_id" id="cc_product_id">
-                                    <option value="one">one</option>
-                                    <option value="two">two</option>
-                                    <option value="three">three</option>
-                                    <option value="four">four</option>
+                                    <option value=""></option>
                                 </select>
                             </td>
                         </tr>
