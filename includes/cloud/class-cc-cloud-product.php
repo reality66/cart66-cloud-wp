@@ -104,7 +104,7 @@ class CC_Cloud_Product {
     public static function search( $query ) {
         self::init();
         $products = array();
-        $url = self::$cloud->api . 'products/search/?search=' . $query;
+        $url = self::$cloud->api . 'products/search/?search=' . $query['term'];
         $headers = self::$cloud->basic_auth_header( array( 'Accept' => 'application/json' ) );
 
         if ( $headers ) {

@@ -14,6 +14,7 @@
     }
 
     jQuery(document).ready(function($) {
+        /*
         $('#cc_product_id').select2({
             width: '100%',
             minimumInputLength: 2,
@@ -32,6 +33,11 @@
                 }
             }
         });
+        */
+        $('#cc_product_id').select2({
+            width: '100%',
+            placeholder: 'Type product name here',
+        });
     });
 </script>
 
@@ -49,7 +55,12 @@
                         <tr valign="top">
                             <th scope="row"><label for="cc_product_id">Products</label></th>
                             <td>
-                                <input type="hidden" name="cc_product_id" id="cc_product_id" />
+                                <select name="cc_product_id" id="cc_product_id">
+                                    <option value="one">one</option>
+                                    <option value="two">two</option>
+                                    <option value="three">three</option>
+                                    <option value="four">four</option>
+                                </select>
                             </td>
                         </tr>
                         <tr valign="top">

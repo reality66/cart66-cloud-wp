@@ -27,7 +27,7 @@ function cc_ajax_product_search( ) {
     )
      */
     foreach ( $products as $p ) {
-        // CC_Log::write( 'Product info from search results: ' . print_r( $p, true ) );
+        CC_Log::write( 'Product info from search results: ' . print_r( $p, true ) );
         $options[] = array( 
             'id' => json_encode( $p ),
             'text' => $p['name'] 
@@ -43,8 +43,8 @@ function cc_product_meta_box_setup() {
     add_action( 'save_post', 'cc_save_product_meta_box', 10, 2 );
     
     $url = cc_url();
-    wp_enqueue_style( 'select2', $url .'resources/js/select2/select2.css' );
-    wp_enqueue_script( 'select2', $url . 'resources/js/select2/select2.min.js' );
+    wp_enqueue_style( 'select2', $url .'resources/css/select2.min.css' );
+    wp_enqueue_script( 'select2', $url . 'resources/js/select2.min.js' );
 
 }
 
