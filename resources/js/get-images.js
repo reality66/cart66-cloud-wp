@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
 		$('.id_img[data-num="'+cible+'"]').val('');
 	});
 
-	$('.upload_pdf_button').live('click',function() {
+  $(document).on('click', '.upload_pdf_button',  function() {
 		$('html').addClass('pdf');
 		num = $(this).attr('data-cible');
 		formfielddeux = $('.url_pdf_input[data-input="'+num+'"]').attr('name');
@@ -30,19 +30,28 @@ jQuery(document).ready(function($) {
 	// window.send_to_editor(html) is how wp would normally handle the received data
 
 	window.original_send_to_editor = window.send_to_editor;
-	window.send_to_editor = function(html){
-	    var fileurl;
+
+	window.send_to_editor = function(html) {
+    var fileurl;
+
 		if (formfield !== null) {
 			var matches = html.match(/wp-image-([0-9]*)/);
+
 			$('input[name="' + formfield + '"]').val(matches[1]);
-			var imgfull = $(html).find('img').css({width:"100px", height:"100px"});
-			$('.img-preview[data-num="'+num+'"]').append($(imgfull));
+      
+			var imgfull = $(html).first('img').css( { "width":"100px", "height":"100px"} );
+      console.log( $(imgfull) );
+
+			$('.img-preview[data-num="'+num+'"]').append( $(imgfull) );
+
 			tb_remove();
 
 			$('html').removeClass('image_spe');
+
 			formfield = null;
 			num = null;
-		} else {
+		} 
+    else {
 			if(formfielddeux !== null) {
 				fileurl = $(html).filter('a').attr('href');
 
@@ -53,7 +62,8 @@ jQuery(document).ready(function($) {
 				$('html').removeClass('pdf');
 				formfielddeux = null;
 				num = null;
-			} else {
+			} 
+      else {
 				window.original_send_to_editor(html);
 			}
 		}
