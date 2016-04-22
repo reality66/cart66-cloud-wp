@@ -112,8 +112,12 @@ class CC_Product extends CC_Model {
     }
 
     public function create_post( $sku, $content = '', $excerpt = '' ) {
+        CC_Log::write( "Creating post for product sku: $sku" );
         $post_id = null;
         $search_results = CC_Cloud_Product::search( $sku );
+
+        CC_Log::write( "Cloud product search results: " . print_r( $search_results, true ) );
+
         if ( is_array( $search_results ) && count( $search_results ) ) {
             $product_info = array_shift( $search_results );
             if ( is_array( $product_info ) && count( $product_info ) ) {

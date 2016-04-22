@@ -21,9 +21,11 @@ function cc_auth_product_update() {
 function cc_auth_product_create() {
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
         $post_body = file_get_contents('php://input');
+        CC_Log::write( "Create product from post body: $post_body" );
+
         if ( $product_data = json_decode( $post_body ) ) {
             $product = new CC_Product();
-            
+
             // Check for demo product
             if ( 'cc-cellerciser' == $product_data->sku ) {
                 $content = $product->cellerciser_content();
@@ -33,10 +35,12 @@ function cc_auth_product_create() {
             }
             else {
                 // Create a normal product pressed from the cloud
+                CC_Log::write( 'Create a normal product pressed from the cloud with sku: ' . $product_data->sku );
                 $product->create_post( $product_data->sku );
             }
 
         }
+
         exit();
     }
 }
@@ -48,7 +52,7 @@ function cc_auth_settings_create() {
         if ( $settings = json_decode( $post_body ) ) {
             $main_settings = CC_Admin_Setting::get_options( 'cart66_main_settings' );
             $main_settings['subdomain'] = $settings->subdomain;
-            CC_Admin_Setting::update_options( 'cart66_main_settings', $main_settings );                        
+            CC_Admin_Setting::update_options( 'cart66_main_settings', $main_settings );
             status_header('201');
         }
 

@@ -84,6 +84,8 @@ function cc_route_handler() {
 
         }
         else {
+            CC_Log::write( 'PHP_AUTH_USER not set - assuming unauthenticated request' );
+
             // Open requests
             switch ( $action ) {
                 case 'sign-in':
