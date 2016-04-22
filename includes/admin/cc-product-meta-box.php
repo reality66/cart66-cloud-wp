@@ -5,7 +5,8 @@ add_action( 'load-post-new.php', 'cc_product_meta_box_setup' );
 add_action( 'wp_ajax_cc_ajax_product_search', 'cc_ajax_product_search' );
 
 function cc_ajax_product_search( ) {
-    $products = CC_Cloud_Product::search( $_REQUEST['search'] );
+    CC_Log::write( 'AJAX product search: ' . print_r( $_REQUEST['search'], true ) );
+    $products = CC_Cloud_Product::search( $_REQUEST['search']['term'] );
     $options = array(); 
 
     /*
