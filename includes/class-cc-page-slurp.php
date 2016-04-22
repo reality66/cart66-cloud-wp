@@ -41,6 +41,10 @@ class CC_Page_Slurp {
         $page_id = false;
         $page = get_page_by_path('page-slurp-template');
 
+        if( is_null( $page ) ) {
+            $page = get_page_by_path('cart66_title');
+        }
+
         if ( is_object( $page ) && $page->ID > 0 ) {
             $page_id = $page->ID;
         }
