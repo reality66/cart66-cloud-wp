@@ -34,7 +34,7 @@ EOL;
 
     public static function enqueue_select2() {
         $url = cc_url();
-        wp_enqueue_style( 'select2', $url .'resources/css/select2.min.css' );
+        wp_enqueue_style( 'select2', $url .'resources/css/select2.css' );
         wp_enqueue_script( 'select2', $url . 'resources/js/select2.min.js' );
     }
 

@@ -1,8 +1,8 @@
 <style type="text/css">
-    .select2-close-mask{
+    .select2-drop-mask {
         z-index: 2000001;
     }
-    .select2-dropdown{
+    .select2-drop {
         z-index: 2000002;
     }
 </style>
@@ -36,7 +36,7 @@
                         search: term
                     };
                 },
-                processResults: function (data, page) {
+                results: function (data, page) {
                   return { results: data };
                 }
             }
@@ -58,9 +58,7 @@
                         <tr valign="top">
                             <th scope="row"><label for="cc_product_id">Products</label></th>
                             <td>
-                                <select name="cc_product_id" id="cc_product_id">
-                                    <option value=""></option>
-                                </select>
+                                <input type="hidden" name="cc_product_id" id="cc_product_id" value="" />
                             </td>
                         </tr>
                         <tr valign="top">

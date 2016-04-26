@@ -18,7 +18,7 @@
                         search: term
                     };
                 },
-                processResults: function (data, page) {
+                results: function (data, page) {
                   return { results: data };
                 }
             }
@@ -28,6 +28,4 @@
     });
 </script>
 
-<select name="_cc_product_json" id="_cc_product_json">
-    <option value=""><?php echo $value ?></option>
-</select>
+<input type="hidden" name="_cc_product_json" id="_cc_product_json" value="" />

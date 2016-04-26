@@ -6,7 +6,7 @@ add_action( 'wp_ajax_cc_ajax_product_search', 'cc_ajax_product_search' );
 
 function cc_ajax_product_search( ) {
     CC_Log::write( 'AJAX product search: ' . print_r( $_REQUEST['search'], true ) );
-    $products = CC_Cloud_Product::search( $_REQUEST['search']['term'] );
+    $products = CC_Cloud_Product::search( $_REQUEST['search'] );
     $options = array(); 
 
     /*
@@ -44,7 +44,7 @@ function cc_product_meta_box_setup() {
     add_action( 'save_post', 'cc_save_product_meta_box', 10, 2 );
     
     $url = cc_url();
-    wp_enqueue_style( 'select2', $url .'resources/css/select2.min.css' );
+    wp_enqueue_style( 'select2', $url .'resources/css/select2.css' );
     wp_enqueue_script( 'select2', $url . 'resources/js/select2.min.js' );
 
 }
