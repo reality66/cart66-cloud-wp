@@ -6,13 +6,16 @@ class CC_Cloud_Receipt {
 
     public static function get_receipt_content( $order_number ) {
 
+        CC_Log::write( "Get receipt content for order number: $order_number" );
+
         if ( empty ( self::$receipt_content ) ) {
             $cloud = new CC_Cloud_API_V1();
             $url = $cloud->subdomain_url() . "receipt/$order_number";
             $response = wp_remote_get( $url, array('sslverify' => false) );
             if ( ! is_wp_error( $response ) ) {
                 if ( $response['response']['code'] == '200' ) {
-                  self::$receipt_content = $response['body'];
+                    // CC_Log::write( 'Receipt content: ' . $response['body'] );
+                    self::$receipt_content = $response['body'];
                 }
             }
             else {

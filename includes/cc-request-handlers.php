@@ -5,7 +5,7 @@
  */
 function cc_task_dispatcher() {
     $task = cc_get( 'cc-task', 'key' );
-    // CC_Log::write( "Task dispatcher found: $task" );
+    CC_Log::write( "Task dispatcher found: $task" );
 
     if ( $task ) {
         switch ( $task ) {
@@ -46,8 +46,11 @@ function cc_task_dispatcher() {
 function cc_route_handler() {
     global $wp;
 
+    CC_Log::write( 'cc_route_handler: starting' );
+
     // If the cc-action is not available forget about doing anything else here
     if ( ! isset( $wp->query_vars[ 'cc-action' ] ) ) {
+        CC_Log::write( 'cc-action not set in WP query vars so bailing out of route handler.' );
         return;
     }
 
@@ -84,7 +87,7 @@ function cc_route_handler() {
 
         }
         else {
-            CC_Log::write( 'PHP_AUTH_USER not set - assuming unauthenticated request' );
+            CC_Log::write( "PHP_AUTH_USER not set - assuming unauthenticated request: $action" );
 
             // Open requests
             switch ( $action ) {
@@ -118,15 +121,16 @@ function cc_route_handler() {
                     break;
                 case 'receipts':
                     $order_id = $wp->query_vars[ 'cc-order-number' ];
-                    CC_Log::write( "Getting receipt for order number: $order_id" );
+                    CC_Log::write( "CC API Call: Getting receipt for order number: $order_id" );
 
                     $_GET['cc_page_title'] = 'Receipt';
                     $_GET['cc_page_name']  = 'Receipt';
                     $_GET['cc_order_id'] = $order_id;
 
                     add_action( 'pre_get_posts', 'CC_Page_Slurp::set_query_to_slurp');
-                    add_filter( 'wp_title',      'CC_Page_Slurp::set_page_title' );
-                    add_filter( 'the_title',     'CC_Page_Slurp::set_page_heading' );
+
+                    add_filter( 'document_title_parts', 'CC_Page_Slurp::set_page_title' );
+                    add_filter( 'the_title','CC_Page_Slurp::set_page_heading' );
 
                     CC_Page_Slurp::check_receipt();
 

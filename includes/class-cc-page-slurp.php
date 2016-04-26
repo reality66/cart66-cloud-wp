@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class CC_Page_Slurp {
 
@@ -14,7 +14,7 @@ class CC_Page_Slurp {
             CC_Log::write( 'Slurp with permalinks OFF: Setting up filters to load content into slurped page' );
             unset( $wp->query_vars['page_id'] );
 
-            $args = array( 
+            $args = array(
                 'page_id' => self::slurp_page_id()
             );
             $wp_query = new WP_Query( $args );
@@ -24,8 +24,9 @@ class CC_Page_Slurp {
         }
 
         if ( $is_slurp ) {
-            add_filter( 'wp_title',  'CC_Page_Slurp::set_page_title' );
+            CC_Log::write( 'This is a page slurp! Setting filters: the_title' );
             add_filter( 'the_title', 'CC_Page_Slurp::set_page_heading' );
+            add_filter( 'document_title_parts', 'CC_Page_Slurp::set_page_title' );
             self::check_receipt();
         }
     }
@@ -49,29 +50,31 @@ class CC_Page_Slurp {
             $page_id = $page->ID;
         }
 
-       return $page_id;
+        return $page_id;
     }
 
-    
-    public static function set_page_title( $content ) {
-        CC_Log::write( 'Starting to set page title with original content: ' . $content );
 
-        if( false !== strpos( $content, '{{cart66_title}}' ) ) {
-            $title = cc_get( 'cc_page_title', 'text_field' );
-            $content = str_replace('{{cart66_title}}', $title, $content);
-            CC_Log::write( 'Slurp title changed: ' . $content );
+    public static function set_page_title( $title ) {
+        $original_title = $title['title'];
+
+        if( false !== strpos( $original_title, '{{cart66_title}}' ) ) {
+            $title_value = cc_get( 'cc_page_title', 'text_field' );
+            $new_title = str_replace('{{cart66_title}}', $original_title , $title_value);
+            $title['title'] = $new_title;
+            CC_Log::write( 'Slurp title changed: ' . $new_title );
         }
         else {
-            CC_Log::write( 'Not setting slurp page title because the token is not in the content: ' . $content );
+            CC_Log::write( 'Not setting slurp page title because the token is not in the title: ' . print_r( $title, true ) );
         }
 
-        return $content;
+        return $title;
     }
 
     public static function set_page_heading( $content ) {
 
         if( false !== strpos( $content, '{{cart66_title}}' ) ) {
             if ( isset( $_GET['cc_page_name'] ) ) {
+                CC_Log::write( 'CC_Page_Slurp: Set page heading with original content: ' . $content );
                 $content = str_replace('{{cart66_title}}', $_GET['cc_page_name'], $content);
             }
         }
@@ -79,18 +82,27 @@ class CC_Page_Slurp {
         return $content;
     }
 
-	public static function check_receipt() {
+    public static function check_receipt() {
+        CC_Log::write( 'Checking if this is the receipt page' );
+
         // Drop the cart key cookie if the receipt page is requested
         if( isset( $_GET['cc_order_id'] ) && isset( $_GET['cc_page_name'] ) && strtolower( $_GET['cc_page_name'] ) == 'receipt' ) {
             CC_Log::write("Receipt page requested - preparing to drop the cart");
             CC_Cart::drop_cart();
+
+            CC_Log::write( 'Add filter: the_content' );
             add_filter( 'the_content', array( 'CC_Page_Slurp', 'load_receipt' ) );
         }
-	}
+        else {
+            CC_Log::write( 'This is not the receipt page: ' . print_r( $_GET, true ) );
+        }
+    }
 
     public static function load_receipt( $content ) {
         $order_id = '';
         $receipt = '';
+
+        CC_Log::write( 'Trying to load receipt from the cloud' );
 
         if ( isset( $_GET['cc_order_id'] ) ) {
             $order_id = $_GET['cc_order_id'];
@@ -100,10 +112,12 @@ class CC_Page_Slurp {
                 $content = apply_filters( 'cc_receipt_content', $content );
             }
             catch(CC_Exception_Store_ReceiptNotFound $e) {
+                CC_Log::write( 'Unable to load receipt because the receipt could not be found in the cloud' );
                 $receipt = '<p>Unable to find receipt for the given order number.</p>';
             }
         }
         else {
+            CC_Log::write( 'Unable to load receipt because cc_order_id is not set' );
             $receipt = '<p>Unable to find receipt because the order number was not provided.</p>';
         }
 
@@ -114,6 +128,9 @@ class CC_Page_Slurp {
 
     public static function hide_page_slurp( $pages ) {
         $page_slurp_id = self::slurp_page_id();
+
+        CC_Log::write ( "Hiding page slurp page from navigation with page id: $page_slurp_id" );
+
         if( $page_slurp_id ) {
             foreach ( $pages as $index => $page ) {
                 if( $page->ID == $page_slurp_id ) {
@@ -121,6 +138,7 @@ class CC_Page_Slurp {
                 }
             }
         }
+
         return $pages;
     }
 
@@ -147,7 +165,7 @@ class CC_Page_Slurp {
             );
             $page_slurp_id = wp_insert_post( $page );
             CC_Log::write("Created page slurp template page with ID: $page_slurp_id");
-        } 
+        }
         else {
             $page = array(
                 'ID' => $page_slurp_id,
