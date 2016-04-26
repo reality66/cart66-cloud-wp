@@ -161,15 +161,19 @@ function cc_theme_support_notice() {
 }
 
 function cc_page_slurp_notice() {
-    ?>
-    <div class="error">
-        <p><?php _e( 'The page slurp page is not found. Please be sure to creat a page with the slug <strong>page-slurp-template</strong>', 'cart66' ); ?></p>
-        <p>
-            <a href="http://cart66.com/tutorial/page-slurp" class="button"><?php _e( 'More information', 'cart66' ); ?></a>
-            <a href="<?php echo add_query_arg( 'cc-task', 'create_slurp_page' ); ?>" class="button"><?php _e('Create Slurp Page', 'cart66' ); ?></a>
-        </p>
-    </div>
-    <?php
+    $task = cc_get( 'cc-task', 'key' );
+    if ( 'create_slurp_page' != $task ) {
+        CC_Log::write( "Showing page slurp notice. The task is: $task" );
+        ?>
+        <div class="error">
+            <p><?php _e( 'The page slurp page is not found. Please be sure to creat a page with the slug <strong>page-slurp-template</strong>', 'cart66' ); ?></p>
+            <p>
+                <a href="http://cart66.com/tutorial/page-slurp" class="button"><?php _e( 'More information', 'cart66' ); ?></a>
+                <a href="<?php echo add_query_arg( 'cc-task', 'create_slurp_page' ); ?>" class="button"><?php _e('Create Slurp Page', 'cart66' ); ?></a>
+            </p>
+        </div>
+        <?php
+    }
 }
 
 function cc_permalinks_notice() {
