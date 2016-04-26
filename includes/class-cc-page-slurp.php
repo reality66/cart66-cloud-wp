@@ -59,7 +59,7 @@ class CC_Page_Slurp {
 
         if( false !== strpos( $original_title, '{{cart66_title}}' ) ) {
             $title_value = cc_get( 'cc_page_title', 'text_field' );
-            $new_title = str_replace('{{cart66_title}}', $original_title , $title_value);
+            $new_title = ucwords( str_replace('{{cart66_title}}', $original_title , $title_value) );
             $title['title'] = $new_title;
             CC_Log::write( 'Slurp title changed: ' . $new_title );
         }
@@ -75,7 +75,7 @@ class CC_Page_Slurp {
         if( false !== strpos( $content, '{{cart66_title}}' ) ) {
             if ( isset( $_GET['cc_page_name'] ) ) {
                 CC_Log::write( 'CC_Page_Slurp: Set page heading with original content: ' . $content );
-                $content = str_replace('{{cart66_title}}', $_GET['cc_page_name'], $content);
+                $content = ucwords( str_replace('{{cart66_title}}', $_GET['cc_page_name'], $content) );
             }
         }
 
