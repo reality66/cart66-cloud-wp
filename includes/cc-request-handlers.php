@@ -62,6 +62,18 @@ function cc_route_handler() {
         unset( $wp->query_vars[ 'cc-action' ] );
         $url = new CC_Cloud_URL();
 
+        // Check for PHP_AUTH_USER when Apache is run in CGI mode
+        CC_Log::write( 'Display SERVER: ' . print_r( $_SERVER, true ) );
+        if ( isset( $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ) ) {
+            CC_Log::write( 'Checking for basic auth headers: ' . $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] );
+            if ( preg_match( '/Basic\s+(.*)$/i', $_SERVER['REDIRECT_HTTP_AUTHORIZATION'], $matches ) ) {
+                list( $name, $password ) = explode( ':', base64_decode( $matches[1] ) );
+                $_SERVER['PHP_AUTH_USER'] = strip_tags( $name );
+                $_SERVER['PHP_AUTH_PW'] = strip_tags( $password );
+                CC_Log::write( "Found basic auth :: $name :: $password" );
+            }
+        }
+
         if ( isset( $_SERVER['PHP_AUTH_USER'] ) ) {
             // Authenticated requests
             if ( cc_auth_verify_secret_key( $_SERVER['PHP_AUTH_USER'] ) ) {
