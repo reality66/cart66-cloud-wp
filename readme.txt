@@ -140,6 +140,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 - Update: Improve receipt loading by handling headers earlier in the action chain
 - Update: Preload the shopping cart widget before the page loads
+- Fix: Cart66 product name was not showing in the product meta box when the editor screen was loaded
 - Fix: Products can now be pushed into WordPress from the Cloud when WordPress is being run by Apache with PHP in CGI mode
 
 = 2.0.11 =
