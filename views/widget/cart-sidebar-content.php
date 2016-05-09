@@ -1,11 +1,11 @@
-<?php if($api_ok): ?>
-  <?php if(isset($item_count) && $item_count > 0): ?>
+<?php if ( $api_ok ): ?>
+  <?php if ( isset( $item_count ) && $item_count > 0 ): ?>
     <ul class="cc_cart_widget_list">
       <li class="cc_cart_widget_list_item">
         <div class="cc_cart_widget_summary">
           <a class="cc_cart_widget_link" href="<?php echo $view_cart_url ?>" rel="nofollow">
             <span class="cc_cart_widget_item_count"><?php echo $item_count; ?></span>
-            <span class="cc_cart_widget_item_count_text"> <?php echo _n('item', 'items', $item_count, 'cart66'); ?></span> 
+            <span class="cc_cart_widget_item_count_text"> <?php echo _n('item', 'items', $item_count, 'cart66'); ?></span>
             <span class="cc_cart_widget_item_count_dash">&ndash;</span>
             <span class="cc_cart_widget_price"><?php echo $subtotal; ?></span>
           </a>

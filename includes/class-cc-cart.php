@@ -13,7 +13,7 @@ class CC_Cart {
     }
 
     public static function get_summary() {
-        if ( !isset( self::$cart_summary ) ) {
+        if ( ! isset( self::$cart_summary ) ) {
             self::$cart_summary = self::load_summary();
         }
 
@@ -25,6 +25,18 @@ class CC_Cart {
         $cart_key = $cloud_cart->get_cart_key( $create_if_empty );
         return $cart_key;
     }
+
+    public static function preload_summary() {
+        if ( ! isset( self::$cart_summary ) ) {
+            self::$cart_summary = self::load_summary();
+        }
+
+        if ( ! self::$cart_summary->api_ok ) {
+            self::drop_cart();
+        }
+
+    }
+
 
     /**
      * Return stdClass summary of cart state
@@ -53,9 +65,8 @@ class CC_Cart {
                 }
             }
             catch( CC_Exception_API_CartNotFound $e ) {
-                CC_Log::write( "The cart key could not be found. Dropping the cart cookie: $cart_key" );
+                CC_Log::write( "The cart key could not be found: $cart_key" );
                 $summary->api_ok = false;
-                self::drop_cart();
             }
             catch( CC_Exception_API $e ) {
                 CC_Log::write( "Unable to retrieve cart from Cart66 Cloud due to API failure: $cart_key" );

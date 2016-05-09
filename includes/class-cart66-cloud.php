@@ -64,6 +64,12 @@ final class Cart66_Cloud {
         add_action( 'wp_ajax_cc_ajax_add_to_cart',        array('CC_Cart', 'ajax_add_to_cart') );
         add_action( 'wp_ajax_nopriv_cc_ajax_add_to_cart', array('CC_Cart', 'ajax_add_to_cart') );
 
+        // Check if request is a page slurp
+        add_action( 'template_redirect', array('CC_Page_Slurp', 'check_slurp') );
+
+        // Preload cart summary if available, otherwise drop unknown carts
+        add_action( 'template_redirect', array('CC_Cart', 'preload_summary') );
+
         // Register sidebar widget
         add_action ('widgets_init', function() {
             register_widget('CC_Cart_Widget');
@@ -71,7 +77,6 @@ final class Cart66_Cloud {
 
         // Write custom css to the head
         add_action( 'wp_head', 'cc_custom_css' );
-        add_action( 'template_redirect', array('CC_Page_Slurp', 'check_slurp') );
 
         // Refresh notices after theme switch
         add_action( 'after_switch_theme', 'cc_reset_theme_notices' );
