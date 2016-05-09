@@ -71,7 +71,7 @@ final class Cart66_Cloud {
 
         // Write custom css to the head
         add_action( 'wp_head', 'cc_custom_css' );
-        add_action( 'get_header', array('CC_Page_Slurp', 'check_slurp') );
+        add_action( 'template_redirect', array('CC_Page_Slurp', 'check_slurp') );
 
         // Refresh notices after theme switch
         add_action( 'after_switch_theme', 'cc_reset_theme_notices' );
