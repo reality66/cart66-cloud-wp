@@ -28,4 +28,4 @@
     });
 </script>
 
-<input type="hidden" name="_cc_product_json" id="_cc_product_json" value="" />
+<input type="hidden" name="_cc_product_json" id="_cc_product_json" data-placeholder="<?php echo $value; ?>" />
