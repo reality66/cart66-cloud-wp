@@ -26,7 +26,8 @@ class CC_Page_Slurp {
         if ( $is_slurp ) {
             CC_Log::write( 'This is a page slurp! Setting filters: the_title' );
             add_filter( 'the_title', 'CC_Page_Slurp::set_page_heading' );
-            add_filter( 'document_title_parts', 'CC_Page_Slurp::set_page_title' );
+            add_filter( 'document_title_parts', 'CC_Page_Slurp::set_page_title', 30, 2 );
+            add_filter( 'wp_title', 'CC_Page_Slurp::set_page_title', 30, 2 );
             self::check_receipt();
         }
     }
@@ -55,17 +56,32 @@ class CC_Page_Slurp {
 
 
     public static function set_page_title( $title ) {
-        $original_title = $title['title'];
+        CC_Log::write( 'Called set_page_title with input: '  . print_r( $title, true ) );
+
+        if ( is_array( $title ) ) {
+            $original_title = $title['title'];
+        }
+        else {
+            $original_title = $title;
+        }
 
         if( false !== strpos( $original_title, '{{cart66_title}}' ) ) {
             $title_value = cc_get( 'cc_page_title', 'text_field' );
             $new_title = ucwords( str_replace('{{cart66_title}}', $original_title , $title_value) );
-            $title['title'] = $new_title;
-            CC_Log::write( 'Slurp title changed: ' . $new_title );
+            CC_Log::write( 'set_page_title: Slurp title changed: ' . $new_title );
         }
         else {
-            CC_Log::write( 'Not setting slurp page title because the token is not in the title: ' . print_r( $title, true ) );
+            CC_Log::write( 'set_page_title: Not setting slurp page title because the token is not in the title: ' . print_r( $title, true ) );
         }
+
+        if ( is_array( $title ) ) {
+            $title['title'] = $new_title;
+        }
+        else {
+            $title = $new_title;
+        }
+
+        CC_Log::write( 'set_page_title result: ' . print_r( $title, true ) );
 
         return $title;
     }
