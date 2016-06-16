@@ -11,7 +11,13 @@ class CC_Cloud_Messenger {
     }
 
     public function send_version_info() {
-        $info = array( 'plugin_version' => CC_VERSION_NUMBER );
+        $site_url = get_site_url();
+
+        $info = array( 
+            'plugin_version' => CC_VERSION_NUMBER,
+            'site_url' => $site_url
+        );
+
         $url = self::$cloud->api . 'stores';
         $options = self::$cloud->basic_auth_header();
         $options['method'] = 'PUT';
