@@ -1,6 +1,6 @@
 === Cart66 Cloud :: Ecommerce with security ===
 Contributors: Reality66,
-Donate link: http://cart66.com
+Donate link: https://cart66.com
 Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales, shopping cart, cloud, sky
 Requires at least: 3.5
 Tested up to: 4.5
@@ -21,14 +21,16 @@ Cart66 is the only WordPress e-commerce option that makes your store PCI complia
 
 Watch these videos to see how to:
 
-- [Run an online magazine subscription](http://cart66.com/blog/wordpress-magazine-plugin/)
-- [Accept online donations](http://cart66.com/blog/accept-donations-online-wordpress/)
-- [Sell music on WordPress](http://cart66.com/blog/sell-music-on-wordpress/)
-- [Manage inventory](http://cart66.com/blog/inventory-management/)
-- [Sell products on a payment plan](http://cart66.com/blog/selling-payment-plans-wordpress/)
-- [Automate sales follow up emails](http://cart66.com/blog/sales-follow-up-email/)
+- [Ticket sales and event registration](https://cart66.com/blog/wordpress-event-registration-plugin/)
+- [Run an online magazine subscription](https://cart66.com/blog/wordpress-magazine-plugin/)
+- [Accept online donations](https://cart66.com/blog/accept-donations-online-wordpress/)
+- [Sell music on WordPress](https://cart66.com/blog/sell-music-on-wordpress/)
+- [Manage inventory](https://cart66.com/blog/inventory-management/)
+- [Sell products on a payment plan](https://cart66.com/blog/selling-payment-plans-wordpress/)
+- [Automate sales follow up emails](https://cart66.com/blog/sales-follow-up-email/)
+- [Sell products on Twitter, Facebook, and email](https://cart66.com/blog/selling-product-bundles-buy-now-links/)
 
-Sell digital files, ship products, sell music, accept donations, and even sell memberships and subscriptions. Cart66 Cloud includes a built-in recurring billing engine and support for over 100 payment gateways. Membership management features to restrict access to content on your site is included too! Unlike other e-commerce plugins where you have to buy add-ons and worry about SSL certificates and security scans, Cart66 Cloud gives you everything you need all in one easy to use package. We even handle all of the [requirements for PCI compliance](http://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance") for you so you don't have to do anything but start selling.
+Sell digital files, ship products, sell music, accept donations, and even sell memberships and subscriptions. Cart66 Cloud includes a built-in recurring billing engine and support for over 100 payment gateways. Membership management features to restrict access to content on your site is included too! Unlike other e-commerce plugins where you have to buy add-ons and worry about SSL certificates and security scans, Cart66 Cloud gives you everything you need all in one easy to use package. We even handle all of the [requirements for PCI compliance](https://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance") for you so you don't have to do anything but start selling.
 
 [vimeo http://vimeo.com/83884705]
 
@@ -112,7 +114,7 @@ If you would prefer to manually install Cart66 Cloud, you will need to download 
 
 = Upgrading =
 
-**Before upgrading to Cart66 2.0** please note that all of the membership access and content restriction functionality has been moved out of the core plugin and is now available as a free, optional add-on. You can [download the Cart66 Members Add-On here](http://cart66.com/add-ons/cart66-members.zip "Cart66 Members Add-On").
+**Before upgrading to Cart66 2.0** please note that all of the membership access and content restriction functionality has been moved out of the core plugin and is now available as a free, optional add-on. You can [download the Cart66 Members Add-On here](https://cart66.com/add-ons/cart66-members.zip "Cart66 Members Add-On").
 
 Please be sure to make a back up of your site and database before upgrading and read the article [Upgrading to Cart66 2.0](http://help.cart66.com/article/336-upgrading-to-cart66-2-0 "Upgrading to Cart66 2.0") for more details on upgrading from Cart66 1.x.
 
@@ -132,7 +134,7 @@ PageSlurp is the technology that we invented to provide a secure and PCI complia
 
 = What is PCI compliance? =
 
-PCI Compliance is a set of requirements that your business needs to meet in order to accept credit card payments. If you are using Cart66 Cloud for your e-commerce, then your website is PCI compliant. If you are not using Cart66 Cloud then you need to handle all of the PCI requirements on your own. Becoming PCI compliant on your own is very expensive and challenging. For more information about PCI compliance, see [What you need to know about PCI compliance](http://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance").
+PCI Compliance is a set of requirements that your business needs to meet in order to accept credit card payments. If you are using Cart66 Cloud for your e-commerce, then your website is PCI compliant. If you are not using Cart66 Cloud then you need to handle all of the PCI requirements on your own. Becoming PCI compliant on your own is very expensive and challenging. For more information about PCI compliance, see [What you need to know about PCI compliance](https://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance").
 
 == Changelog ==
 
@@ -320,8 +322,8 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 = 1.6.0 - 8/6/2013 =
 
-- New: [Post category restriction](http://cart66.com/cloud-docs/restrict-access-to-post-categories/)
-- New: Set [access denied page for restricted Pages](http://cart66.com/cloud-docs/content-restriction-for-pages-vs-posts/)
+- New: [Post category restriction](https://cart66.com/cloud-docs/restrict-access-to-post-categories/)
+- New: Set [access denied page for restricted Pages](https://cart66.com/cloud-docs/content-restriction-for-pages-vs-posts/)
 - Update: Major speed enhancements making pages load over 10x faster especially when multiple products are on the same page
 - Update: Speed improvements by significantly reducing in the number of callbacks to the Cart66 Cloud
 - Fixed: Cleaning up a bunch of PHP notices when running in debug/strict mode
