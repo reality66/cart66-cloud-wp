@@ -106,7 +106,7 @@ class CC_Cloud_Product {
         $products = array();
 
         CC_Log::write( "CC_Cloud_Product search query param: " . print_r( $query, true ) );
-        $url = self::$cloud->api . 'products/search/?search=' . $query;
+        $url = self::$cloud->api . 'products/search/?search=' . urlencode( $query );
 
         CC_Log::write( "Search the cloud for products with this URL: $url" );
 
