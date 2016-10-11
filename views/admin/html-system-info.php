@@ -4,8 +4,11 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $data = curl_exec($ch);
 curl_close($ch);
 
+$tls_version = "Not set";
 $json = json_decode($data);
-$tls_version = $json->tls_version;
+if ( isset( $json->tls_version ) ) {
+  $tls_version = $json->tls_version;
+}
 ?>
 <div class="card">
     <table>
