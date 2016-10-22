@@ -67,7 +67,8 @@ function cc_add_product_meta_box() {
  */
 function cc_product_meta_box_render( $post, $box ) {
 
-    $value = get_post_meta( $post->ID, '_cc_product_name', true );
+    $product_name = get_post_meta( $post->ID, '_cc_product_name', true );
+    $layout = get_post_meta( $post->ID, '_cc_product_layout', true );
 
     if ( empty( $value ) ) {
         $value = 'Select Product';
@@ -76,7 +77,8 @@ function cc_product_meta_box_render( $post, $box ) {
     $data = array( 
         'post' => $post, 
         'box' => $box,
-        'value' => $value
+        'value' => $product_name,
+        'layout' => $layout
     );
 
     $template = CC_PATH . 'views/admin/html-product-meta-box.php';
@@ -154,6 +156,12 @@ function cc_store_meta_box_values( $post_id ) {
             CC_Log::write( "Totally skipping saving meta data for a reason currently unknown to me." );
         }
 
+    }
+
+    // Save the product layout value
+    if ( ! empty( $_POST['_cc_product_layout'] ) ) {
+        $layout = sanitize_text_field( $_POST['_cc_product_layout'] );
+        update_post_meta( $post_id, '_cc_product_layout', $layout );
     }
 
 }

@@ -20,20 +20,26 @@ function cc_filter_product_single( $content ) {
     global $post;
     $post_type = get_post_type();
 
-    if ( is_single() && 'cc_product' == $post_type ) {
-        wp_enqueue_script( 'cc-gallery-toggle', CC_URL . 'resources/js/gallery-toggle.js', 'jquery' );
-        $thumbs = cc_get_product_thumb_sources( $post->ID );
-        $images = cc_get_product_gallery_image_sources( $post->ID, false );
-        if ( count( $images ) > 0 ) {
-            $data = array( 'images' => $images, 'thumbs' => $thumbs );
-            $single_product_view = CC_View::get( CC_PATH . 'templates/partials/single-product.php', $data );
-        }
-        else {
-            $single_product_view = CC_View::get( CC_PATH . 'templates/partials/single-product-no-gallery.php' );
+    $layout = get_post_meta( $post->ID, '_cc_product_layout', true );
+
+    if ( 'basic' == $layout ) {
+
+        if ( is_single() && 'cc_product' == $post_type ) {
+            wp_enqueue_script( 'cc-gallery-toggle', CC_URL . 'resources/js/gallery-toggle.js', 'jquery' );
+            $thumbs = cc_get_product_thumb_sources( $post->ID );
+            $images = cc_get_product_gallery_image_sources( $post->ID, false );
+            if ( count( $images ) > 0 ) {
+                $data = array( 'images' => $images, 'thumbs' => $thumbs );
+                $single_product_view = CC_View::get( CC_PATH . 'templates/partials/single-product.php', $data );
+            }
+            else {
+                $single_product_view = CC_View::get( CC_PATH . 'templates/partials/single-product-no-gallery.php' );
+            }
+
+            $content = $single_product_view . $content;
         }
 
-        $content = $single_product_view . $content;
-    } 
+    }
 
     return $content;
 }
