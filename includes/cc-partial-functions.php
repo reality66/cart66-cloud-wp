@@ -22,7 +22,7 @@ function cc_filter_product_single( $content ) {
 
     $layout = get_post_meta( $post->ID, '_cc_product_layout', true );
 
-    if ( 'basic' == $layout ) {
+    if ( 'custom' != $layout ) {
 
         if ( is_single() && 'cc_product' == $post_type ) {
             wp_enqueue_script( 'cc-gallery-toggle', CC_URL . 'resources/js/gallery-toggle.js', 'jquery' );
