@@ -13,18 +13,6 @@ function cc_register_product_post_type() {
         return;
     }
     
-    register_taxonomy(
-		'product-category',
-		'cc_product',
-		array(
-			'label' => __( 'Product Categories' ),
-            'name' => 'Product Categories',
-            'singular_name' => 'Product Category',
-			'rewrite' => array( 'slug' => 'product-category' ),
-            'hierarchical' => true
-		)
-	);
-
     $labels = array(
         'name' => 'Products',
         'singular_name' => 'Product',
@@ -69,6 +57,20 @@ function cc_register_product_post_type() {
     );
 
 	/* Register the post type. */
-    // CC_Log::write( 'Registering Cart66 product post type: cc_product' );
+    CC_Log::write( 'Registering Cart66 product post type: cc_product' );
     register_post_type( 'cc_product', $post_type_attrs );
+
+    /* Register Cart66 Product Categories taxonomy */
+    register_taxonomy(
+		'product-category',
+		'cc_product',
+		array(
+			'label' => __( 'Product Categories' ),
+            'singular_name' => 'Product Category',
+			'rewrite' => array( 'slug' => 'product-category' ),
+            'hierarchical' => true
+		)
+	);
+
+    register_taxonomy_for_object_type( 'product-category', 'cc_product' );
 }
