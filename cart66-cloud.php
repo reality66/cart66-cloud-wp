@@ -3,13 +3,13 @@
 Plugin Name: Cart66 Cloud
 Plugin URI: http://cart66.com
 Description: Securely Hosted Ecommerce For WordPress
-Version: 2.0.15
+Version: 2.0.16
 Author: Reality66
 Author URI: http://www.reality66.com
 
 -------------------------------------------------------------------------
 Cart66 Cloud
-Copyright 2016  Reality66
+Copyright 2017  reality66
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
