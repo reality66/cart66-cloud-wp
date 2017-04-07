@@ -14,6 +14,7 @@ class CC_Admin_Settings_Post_Type_Selector extends CC_Admin_Settings_Checkboxes 
         }
 
         $selected_post_types = CC_Admin_Setting::get_option( 'cart66_main_settings', 'product_post_types' );
+        $selected_post_types = is_array( $selected_post_types ) ? $selected_post_types : array();
         $selected_post_types[] = 'cc_product';
         $this->set_selected( $selected_post_types );
 
