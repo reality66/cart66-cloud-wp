@@ -68,6 +68,7 @@
                                     <option value="inline">inline</option>
                                     <option value="vertical">vertical</option>
                                     <option value="horizontal">horizontal</option>
+                                    <option value="naked">naked</option>
                                 </select>
                                 <p class="description"><?php _e('If the product has no options, we recommend choosing the "inline" display mode.', 'cart66'); ?></p>
                             </td>

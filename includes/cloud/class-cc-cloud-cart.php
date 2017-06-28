@@ -21,7 +21,7 @@ class CC_Cloud_Cart {
         $args['body'] = $data;
 
         // Post to create cart
-        // CC_Log::write("Create cart via library call to Cart66 Cloud: $url " . print_r( $args, true ) );
+        CC_Log::write("Create cart via library call to Cart66 Cloud: $url " . print_r( $args, true ) );
         $response = wp_remote_post( $url, $args );
 
         if( !self::$cloud->response_created( $response ) ) {
@@ -30,7 +30,7 @@ class CC_Cloud_Cart {
         }
 
         $cart_data = json_decode( $response['body'] );
-        // CC_Log::write( 'data received from cloud after creating cart: ' . print_r( $cart_data, true) );
+        CC_Log::write( 'data received from cloud after creating cart: ' . print_r( $cart_data, true) );
 
         $cart_key = $cart_data->key;
         self::$cart_key = $cart_key;
@@ -52,15 +52,15 @@ class CC_Cloud_Cart {
 
         if ( isset( self::$cart_key ) ) {
             $cart_key = self::$cart_key;
-            // CC_Log::write( "got cart key from myself: $cart_key" );
+            CC_Log::write( "got cart key from myself: $cart_key" );
         } elseif ( isset( $_COOKIE['cc_cart_key'] ) ) {
             $cart_key = $_COOKIE['cc_cart_key'];
-            // CC_Log::write( "got cart key from cookie: $cart_key" );
+            CC_Log::write( "got cart key from cookie: $cart_key" );
         }
 
         if ( $cart_key == false && $create_if_empty !== false ) {
             $cart_key = $this->create();
-            // CC_Log::write( "created cart key in the cloud: $cart_key" );
+            CC_Log::write( "created cart key in the cloud: $cart_key" );
         }
 
         self::$cart_key = $cart_key;
