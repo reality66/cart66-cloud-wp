@@ -3,8 +3,8 @@ Contributors: Reality66,
 Donate link: https://cart66.com
 Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales, shopping cart, cloud, sky
 Requires at least: 3.5
-Tested up to: 4.7
-Stable tag: 2.0.17
+Tested up to: 4.8
+Stable tag: 2.0.18
 
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -15,9 +15,7 @@ Cart66 Cloud is everything you need for a secure and PCI compliant store. You do
 
 A secure and sophisticated approach to WordPress e-commerce.
 
-Cart66 is the most secure e-commerce platform for WordPress. Best of all, Cart66 handles all the security for you so you can focus entirely on your business.
-
-Cart66 is the only WordPress e-commerce option that makes your store PCI compliant.
+Cart66 includes a WordPress plugin as well as a suite of secure connected services that go beyond what you can do with a plugin alone. With Cart66 you don't have to worry about how to secure your digital products, hooking up a business class SMTP server for sending email receipts, secure PCI compliants connections to your payment gateway, and more. Everything you need is together in one place developed and supported by a team dedicated to making your store run smoothly. We don't make you search through huge marketplaces to piece together what you need for your store. We give you everything together. Come join us. It's better together. :)
 
 Watch these videos to see how to:
 
@@ -137,6 +135,10 @@ PageSlurp is the technology that we invented to provide a secure and PCI complia
 PCI Compliance is a set of requirements that your business needs to meet in order to accept credit card payments. If you are using Cart66 Cloud for your e-commerce, then your website is PCI compliant. If you are not using Cart66 Cloud then you need to handle all of the PCI requirements on your own. Becoming PCI compliant on your own is very expensive and challenging. For more information about PCI compliance, see [What you need to know about PCI compliance](https://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance").
 
 == Changelog ==
+
+= 2.0.18 =
+
+- Update: Resolve conflicts with other plugins using the same class prefix as Cart66 Cloud.
 
 = 2.0.17 =
 

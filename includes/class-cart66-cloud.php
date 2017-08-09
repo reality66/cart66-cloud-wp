@@ -24,7 +24,7 @@ final class Cart66_Cloud {
         define( 'CC_PATH', WP_PLUGIN_DIR . '/' . $plugin_dir . '/' );
         define( 'CC_URL',  WP_PLUGIN_URL . '/' . $plugin_dir . '/' );
         define( 'CC_TEMPLATE_DEBUG_MODE', false );
-        define( 'CC_VERSION_NUMBER', '2.0.13' );
+        define( 'CC_VERSION_NUMBER', '2.0.18' );
     }
 
     private function include_core_files() {
@@ -120,15 +120,23 @@ final class Cart66_Cloud {
             $root = CC_PATH;
 
             if(cc_starts_with($class, 'cc_exception')) {
-                include_once $root . 'includes/exception-library.php';
+                $include_file = $root . 'includes/exception-library.php';
             } elseif ( cc_starts_with( $class, 'cc_admin_setting' ) ) {
-                include_once $root . 'includes/admin/settings/' . $file;
+                $include_file = $root . 'includes/admin/settings/' . $file;
             } elseif ( cc_starts_with( $class, 'cc_admin' ) ) {
-                include_once $root . 'includes/admin/' . $file;
+                $include_file = $root . 'includes/admin/' . $file;
             } elseif ( cc_starts_with( $class, 'cc_cloud' ) ) {
-                include_once $root . 'includes/cloud/' . $file;
+                $include_file = $root . 'includes/cloud/' . $file;
             } else {
-                include_once $root . 'includes/' . $file;
+                $include_file = $root . 'includes/' . $file;
+            }
+
+            /**
+             * Make sure class exists before including file to prevent prefix 
+             * clashes from causing a fatal error 
+             */
+            if ( file_exists( $include_file ) ) {
+                include_once $include_file;
             }
 
         } elseif($class == 'CC') {
