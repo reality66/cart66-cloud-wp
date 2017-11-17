@@ -1,10 +1,10 @@
 === Cart66 Cloud :: Ecommerce with security ===
-Contributors: Reality66,
+Contributors: reality66,
 Donate link: https://cart66.com
-Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales, shopping cart, cloud, sky
+Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales
 Requires at least: 3.5
-Tested up to: 4.8
-Stable tag: 2.0.18
+Tested up to: 4.9
+Stable tag: 2.0.19
 
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -135,6 +135,10 @@ PageSlurp is the technology that we invented to provide a secure and PCI complia
 PCI Compliance is a set of requirements that your business needs to meet in order to accept credit card payments. If you are using Cart66 Cloud for your e-commerce, then your website is PCI compliant. If you are not using Cart66 Cloud then you need to handle all of the PCI requirements on your own. Becoming PCI compliant on your own is very expensive and challenging. For more information about PCI compliance, see [What you need to know about PCI compliance](https://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance").
 
 == Changelog ==
+
+= 2.0.19 =
+
+- Fix path to product metabox selection field
 
 = 2.0.18 =
 
