@@ -1,8 +1,9 @@
-=== Cart66 Cloud :: Ecommerce with security ===
+=== Cart66 Cloud :: WordPress Ecommerce The Easy Way ===
 Contributors: reality66,
 Donate link: https://cart66.com
 Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales
 Requires at least: 3.5
+Requires PHP: 5.4
 Tested up to: 4.9
 Stable tag: 2.0.19
 
