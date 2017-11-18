@@ -6,15 +6,14 @@ Requires at least: 3.5
 Requires PHP: 5.4
 Tested up to: 4.9
 Stable tag: 2.0.19
-
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Cart66 Cloud is everything you need for a secure and PCI compliant store. You don't even need your own SSL Certificate.
+Cart66 is the easiest way to sell on WordPress. You literally have fewer things to worry about because Cart66 handles the hard stuff for you.
 
 == Description ==
 
-A secure and sophisticated approach to WordPress e-commerce.
+Cart66's connected services solves problems you might not have even thought about yet like payment security, keeping email receipts out of people's spam folders, and securely storing and delivering digital products. There's a built in recurring billing engine that for selling memberships, subscriptions, or physical products on a recurring basis - like coffee or vitamins.
 
 Cart66 includes a WordPress plugin as well as a suite of secure connected services that go beyond what you can do with a plugin alone. With Cart66 you don't have to worry about how to secure your digital products, hooking up a business class SMTP server for sending email receipts, secure PCI compliants connections to your payment gateway, and more. Everything you need is together in one place developed and supported by a team dedicated to making your store run smoothly. We don't make you search through huge marketplaces to piece together what you need for your store. We give you everything together. Come join us. It's better together. :)
 
