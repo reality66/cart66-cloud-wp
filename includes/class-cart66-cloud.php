@@ -96,7 +96,7 @@ final class Cart66_Cloud {
             add_action( 'widgets_init', create_function('', 'return register_widget("CC_Category_Widget");') );
         }
         else {
-            // Add filter for to attempt to get products showing as pages rather than posts
+            // Add filter to attempt to get products showing as pages rather than posts
             add_filter( 'template_include', 'cc_use_page_template' );
 
             // Add filter for rendering product partial with gallery and order form

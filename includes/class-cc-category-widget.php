@@ -6,7 +6,6 @@ class CC_Category_Widget extends WP_Widget {
         parent::__construct(
             'CC_Category_Widget',
             __( 'Cart66 Product Categories', 'cart66' ),
-            $description,
             $widget_ops = array (
                 'classname' => 'CC_Category_Widget',
                 'description' => __( 'Product categories in your sidebar', 'cart66' )

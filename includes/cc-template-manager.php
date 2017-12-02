@@ -18,9 +18,20 @@ if ( ! function_exists( 'cc_get_template_part' ) ) {
     function cc_get_template_part( $slug, $name = '' ) {
         $template = '';
 
+        CC_Log::write( "Getting template for Cart66 page.\nSlug: $slug :: Name: $name" );
+
         // Look in active-theme/slug-name.php and active-theme/cart66/slug-name.php
         if ( $name && ! CC_TEMPLATE_DEBUG_MODE ) {
-            $template = locate_template( array( "{$slug}-{$name}.php", 'cart66/' . "{$slug}-{$name}.php" ) );
+
+            $locations = array ( 
+                "{$slug}-{$name}.php", 
+                'cart66/' . "{$slug}-{$name}.php" 
+            );
+
+            $template = locate_template( $locations );
+
+            CC_Log::write( "Looking up template override for name: $name" );
+            CC_Log::write( print_r( $locations, true ) );
         }
 
         // Get default slug-name.php
