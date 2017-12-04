@@ -53,7 +53,7 @@ function cc_register_product_post_type() {
         'hierarchical' => false,
         'menu_position' => null,
         'menu_icon' => 'dashicons-tag',
-        'supports' => array ( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'revisions' )
+        'supports' => array ( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'revisions', 'make-builder' )
     );
 
 	/* Register the post type. */
