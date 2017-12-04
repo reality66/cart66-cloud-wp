@@ -87,8 +87,11 @@ if ( $use_product_post_type != 'disable' ) {
 function cc_use_page_template( $template ) {
     $post_type = get_post_type();
 
+    CC_Log::write( "Using page template of post type: $post_type" );
+
     if ( is_single() && 'cc_product' == $post_type ) {
         $new_template = locate_template( array('single-product.php', 'page.php', 'single.php'), false );
+        // $new_template = locate_template( array('single-product.php', 'cart66/single-product.php', 'page.php', 'single.php'), false );
         if ( ! empty( $new_template ) ) {
             $template = $new_template;
         }
