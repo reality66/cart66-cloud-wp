@@ -56,6 +56,9 @@ final class Cart66_Cloud {
         // Register custom post type for products
         add_action( 'init', 'cc_register_product_post_type' );
 
+        // Register customer reviews post type
+        add_action( 'init', array('CC_Customer_Review', 'init') );
+
         // Add actions to process all add to cart requests via ajax
         add_action( 'wp_enqueue_scripts',                 'cc_enqueue_ajax_add_to_cart' );
         add_action( 'wp_enqueue_scripts',                 'cc_enqueue_cart66_wordpress_js' );
