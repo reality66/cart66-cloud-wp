@@ -34,7 +34,6 @@ class CC_Cart {
         if ( ! self::$cart_summary->api_ok ) {
             self::drop_cart();
         }
-
     }
 
 
@@ -172,6 +171,16 @@ class CC_Cart {
 
             do_action('cc_after_add_to_cart');
         }
+        die();
+    }
+
+    /**
+     * Return 1 item or N items
+     */
+    public static function ajax_get_cart_count() {
+        $count = CC_Cart::item_count();
+        $result = ( $count == 1 ) ? $count . ' item' : $count . ' items';
+        echo $result;
         die();
     }
 

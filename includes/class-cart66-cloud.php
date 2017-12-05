@@ -61,8 +61,12 @@ final class Cart66_Cloud {
         add_action( 'wp_enqueue_scripts',                 'cc_enqueue_cart66_wordpress_js' );
         add_action( 'wp_enqueue_scripts',                 'cc_enqueue_cart66_styles' );
         add_action( 'wp_enqueue_scripts',                 'cc_enqueue_featherlight' );
+
         add_action( 'wp_ajax_cc_ajax_add_to_cart',        array('CC_Cart', 'ajax_add_to_cart') );
         add_action( 'wp_ajax_nopriv_cc_ajax_add_to_cart', array('CC_Cart', 'ajax_add_to_cart') );
+
+        add_action( 'wp_ajax_cc_ajax_get_cart_count',          array('CC_Cart', 'ajax_get_cart_count') );
+        add_action( 'wp_ajax_nopriv_cc_ajax_get_cart_count',   array('CC_Cart', 'ajax_get_cart_count') );
 
         // Check if request is a page slurp
         add_action( 'template_redirect', array('CC_Page_Slurp', 'check_slurp') );

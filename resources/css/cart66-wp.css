@@ -101,3 +101,27 @@
     z-index: 90; /* makes the div the second most top layer, so it’ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
 }
 
+/** Cart Nav Icon **/
+
+.cc-cart-link-light,
+.cc-cart-link-dark {
+  font-size: 14px;
+  font-weight: bold;
+  height: 20px;
+  padding-left: 34px;
+  display: inline-block;
+  background: url(../images/cart-icon-dark.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+}
+
+li.cc-cart-nav-light a, 
+.cc-cart-link-light {
+  background: url(../images/cart-icon-light.png);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+}
+
+.cc-cart-count {
+  font-weight: normal;
+}
