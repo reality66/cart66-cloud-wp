@@ -141,6 +141,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 = 2.0.20 = 
 
 - Updates to improve custom page templates for Cart66 products
+- Only show thumbnail gutter when there are thumbnails
 
 = 2.0.19 =
 
