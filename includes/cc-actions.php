@@ -119,7 +119,7 @@ function cc_enqueue_cart66_styles() {
 
     $default_css = CC_Admin_Setting::get_option( 'cart66_main_settings', 'default_css' );
     if ( 'no' != $default_css ) {
-        wp_enqueue_style( 'cart66-templates', $url . 'templates/css/cart66-templates.css' );
+        wp_enqueue_style( 'cart66-templates', $url . 'templates/css/cart66-templates.css', ['featherlight-styles'] );
     }
 }
 
