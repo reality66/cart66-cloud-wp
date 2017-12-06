@@ -25,7 +25,7 @@ function cc_filter_product_single( $content ) {
     if ( 'custom' != $layout ) {
 
         if ( is_single() && 'cc_product' == $post_type ) {
-            wp_enqueue_script( 'cc-gallery-toggle', CC_URL . 'resources/js/gallery-toggle.js', 'jquery' );
+            wp_enqueue_script( 'cc-gallery-toggle', CC_URL . 'resources/js/gallery-toggle.js', ['jquery'] );
             $thumbs = cc_get_product_thumb_sources( $post->ID );
             $images = cc_get_product_gallery_image_sources( $post->ID, false );
             if ( count( $images ) > 0 ) {
