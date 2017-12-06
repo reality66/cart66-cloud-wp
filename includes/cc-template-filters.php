@@ -10,7 +10,7 @@ function cc_template_include( $template ) {
     $post_type = get_post_type();
 
     if ( is_single() && 'cc_product' == $post_type ) {
-        wp_enqueue_script( 'cc-gallery-toggle', CC_URL . 'resources/js/gallery-toggle.js', 'jquery' );
+        wp_enqueue_script( 'cc-gallery-toggle', CC_URL . 'resources/js/gallery-toggle.js', ['jquery'] );
         $template = cc_get_template_part( 'single', 'product' );
     } elseif ( is_post_type_archive( 'cc_product' ) ) {
         $template = cc_get_template_part( 'archive', 'product' );

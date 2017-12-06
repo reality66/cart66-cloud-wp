@@ -62,23 +62,15 @@ class CC_Admin_Post_Type_Settings extends CC_Admin_Setting {
         // Create a section for product options
         $post_type_section = new CC_Admin_Settings_Section( __( 'Product Post Type Options (Advanced Settings For Theme Developers)', 'cart66' ), 'cart66_post_type_settings' );
         $post_type_section->description = __( 'These are advanced settings for theme developers.<br>If you are not creating page templates for the product post type you probably do not want to use these settings.', 'cart66' );
-        $post_type_section->description .= '<br /><br /><strong>';
-        $post_type_section->description .= __( 'If You Are Using Catalog Shortcodes: ' , 'cart66' );
-        $post_type_section->description .= '</strong><br />'; 
-        $post_type_section->description .= __( 'Ignore the settings below and leave Custom Page Templates set to No.', 'cart66' );
-        $post_type_section->description .= '<br />';
-        $post_type_section->description .= __( 'All the same features below are managed by the catalog shortcode parameters.', 'cart66' );
-        $post_type_section->description .= '<br /><br /><strong>';
-        $post_type_section->description .= __( 'If You Are Using Custom Post Type Templates: ', 'cart66' );
-        $post_type_section->description .= '</strong><br />';
-        $post_type_section->description .= __( 'Selecting Yes will disable all of the catalog shortcodes.', 'cart66' );
+        $post_type_section->description .= '<br /><br />';
 
         // Add option to disable Cart66 custom post type
-        $use_product_post_type = new CC_Admin_Settings_Radio_Buttons( __( 'Use product post type', 'cart66' ), 'use_product_post_type' );
-        $use_product_post_type->new_option( __( 'Yes (recommended)', 'cart66' ), 'yes', true );
+        $use_product_post_type = new CC_Admin_Settings_Radio_Buttons( __( 'Use Cart66 Product Custom Post Type', 'cart66' ), 'use_product_post_type' );
+        $use_product_post_type->new_option( __( 'Yes (recommended) <span class="description">Required by catalog shortcode and product photo gallery</span>', 'cart66' ), 'yes', true );
         $use_product_post_type->new_option( __( 'Hide', 'cart66' ), 'no', false );
         $use_product_post_type->new_option( __( 'Disable', 'cart66' ), 'disable', false );
-        $use_product_post_type->description = __( 'If you do not want to use the cart66 catalog, photo gallery, or custom page templates, you can turn off the Cart66 custom post type', 'cart66' );
+        $use_product_post_type->description .= __( 'If you disable (or choose not to use) the Cart66 Product Custom Post Type, the product catalog shortcodes will not work ', 'cart66');
+        $use_product_post_type->description .= __( 'and you will not have access to the built-in Cart66 photo gallery.', 'cart66');
         $use_product_post_type->set_selected( $option_values[ 'use_product_post_type' ] );
         $post_type_section->add_field( $use_product_post_type );
 
@@ -86,12 +78,14 @@ class CC_Admin_Post_Type_Settings extends CC_Admin_Setting {
         $product_templates = new CC_Admin_Settings_Radio_Buttons( __( 'Custom Post Type Templates', 'cart66' ), 'product_templates' );
         $product_templates->new_option( __( 'Yes', 'cart66' ), 'yes', false );
         $product_templates->new_option( __( 'No', 'cart66' ), 'no', false );
-        $product_templates-> description = '<strong>';
-        $product_templates->description = __( 'If you are using shortcodes for the catalog view you must select No.', 'cart66' );
-        $product_templates->description .= '</strong><br />';
-        $product_templates->description .= __( 'If you are using your own custom page templates then select Yes.', 'cart66' );
-        $product_templates->description .= '<br />';
-        $product_templates->description .= __( 'The settings below only apply if you select Yes.', 'cart66' );
+        $product_templates->description = __( 'Selecting "yes" allows you to create your own product page templates like for sing-product.php.', 'cart66' );
+        $product_templates->description = __( 'Put your custom templates in your theme\'s root directory so that Cart66 plugin updates will not overwrite your custom templates.', 'cart66' );
+        $product_templates->description .= '<br /><br />';
+
+        $product_templates->description .= '<strong>Product Archive Settings</strong><br><br>';
+
+        $product_templates->description .= __( 'The settings below apply to the <code>/products</code> archive view.<br> ', 'cart66' );
+        $product_templates->description .= __( 'It is recommend that you use the <code>[cc_product_catalog]</code> <a href="http://help.cart66.com/article/353-product-catalog-shortcode">product catalog shortcode</a> instead of the <code>/products</code> archive view for showing products in a catalog format. The catalog shortcode gives you more control over which products are displayed and how they are sorted and organized.', 'cart66' );
         $product_templates->set_selected( $option_values[ 'product_templates' ] );
         $post_type_section->add_field( $product_templates );
 
@@ -143,7 +137,7 @@ class CC_Admin_Post_Type_Settings extends CC_Admin_Setting {
         $default_css = new CC_Admin_Settings_Radio_Buttons( __( 'Include Default CSS', 'cart66' ), 'default_css' );
         $default_css->new_option( __( 'Yes' ), 'yes', true );
         $default_css->new_option( __( 'No', 'cart66' ), 'no', false );
-        $default_css->description = __( 'You can choose whether or not to include the default cart66 CSS for product templates.', 'cart66' );
+        $default_css->description = __( 'You can choose whether or not to include the default Cart66 CSS for product templates.', 'cart66' );
         $default_css->set_selected( $option_values[ 'default_css' ] );
         $post_type_section->add_field( $default_css );
 
