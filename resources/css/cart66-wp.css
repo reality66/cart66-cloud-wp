@@ -125,3 +125,8 @@ li.cc-cart-nav-light a,
 .cc-cart-count {
   font-weight: normal;
 }
+
+/** Hide post meta on product pages **/
+.single-cc_product .entry-meta {
+  display: none;
+}
