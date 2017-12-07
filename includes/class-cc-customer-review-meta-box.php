@@ -5,8 +5,29 @@ class CC_Customer_Review_Meta_Box {
 	private $screens = array(
 		'cc_customer_review',
 	);
-
 	private $fields = array(
+		array(
+			'id' => 'status',
+			'label' => 'Status',
+			'type' => 'select',
+			'options' => array(
+				'pending',
+				'approved',
+				'denied',
+			),
+		),
+		array(
+			'id' => 'rating',
+			'label' => 'Rating',
+			'type' => 'select',
+            'options' => array(
+                '1' => '1 star',
+                '2' => '2 stars',
+                '3' => '3 stars',
+                '4' => '4 stars',
+                '5' => '5 stars'
+            ),
+		),
 		array(
 			'id' => 'name',
 			'label' => 'Name',
@@ -14,13 +35,13 @@ class CC_Customer_Review_Meta_Box {
 		),
 		array(
 			'id' => 'email',
-			'label' => 'email',
+			'label' => 'Email',
 			'type' => 'email',
 		),
 		array(
-			'id' => 'rating',
-			'label' => 'Rating',
-			'type' => 'number',
+			'id' => 'sku',
+			'label' => 'SKU',
+			'type' => 'text',
 		),
 	);
 
@@ -28,8 +49,6 @@ class CC_Customer_Review_Meta_Box {
 	 * Class construct method. Adds actions to their respective WordPress hooks.
 	 */
 	public function __construct() {
-        CC_Log::write( "Constructing Customer Review Meta Box" );
-
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_post' ) );
 	}
@@ -41,12 +60,12 @@ class CC_Customer_Review_Meta_Box {
 	public function add_meta_boxes() {
 		foreach ( $this->screens as $screen ) {
 			add_meta_box(
-				'customer-information',
-				__( 'Customer Information', 'cart66' ),
+				'review-details',
+				__( 'Review Details', 'cart66' ),
 				array( $this, 'add_meta_box_callback' ),
 				$screen,
-				'normal',
-				'default'
+				'advanced',
+				'high'
 			);
 		}
 	}
@@ -57,7 +76,7 @@ class CC_Customer_Review_Meta_Box {
 	 * @param object $post WordPress post object
 	 */
 	public function add_meta_box_callback( $post ) {
-		wp_nonce_field( 'customer_information_data', 'customer_information_nonce' );
+		wp_nonce_field( 'review_details_data', 'review_details_nonce' );
 		$this->generate_fields( $post );
 	}
 
@@ -68,8 +87,25 @@ class CC_Customer_Review_Meta_Box {
 		$output = '';
 		foreach ( $this->fields as $field ) {
 			$label = '<label for="' . $field['id'] . '">' . $field['label'] . '</label>';
-			$db_value = get_post_meta( $post->ID, 'customer_information_' . $field['id'], true );
+			$db_value = get_post_meta( $post->ID, 'review_details_' . $field['id'], true );
 			switch ( $field['type'] ) {
+				case 'select':
+					$input = sprintf(
+						'<select id="%s" name="%s">',
+						$field['id'],
+						$field['id']
+					);
+					foreach ( $field['options'] as $key => $value ) {
+						$field_value = !is_numeric( $key ) ? $key : $value;
+						$input .= sprintf(
+							'<option %s value="%s">%s</option>',
+							$db_value === $field_value ? 'selected' : '',
+							$field_value,
+							$value
+						);
+					}
+					$input .= '</select>';
+					break;
 				default:
 					$input = sprintf(
 						'<input %s id="%s" name="%s" type="%s" value="%s">',
@@ -95,16 +131,15 @@ class CC_Customer_Review_Meta_Box {
 			$input
 		);
 	}
-
 	/**
 	 * Hooks into WordPress' save_post function
 	 */
 	public function save_post( $post_id ) {
-		if ( ! isset( $_POST['customer_information_nonce'] ) )
+		if ( ! isset( $_POST['review_details_nonce'] ) )
 			return $post_id;
 
-		$nonce = $_POST['customer_information_nonce'];
-		if ( !wp_verify_nonce( $nonce, 'customer_information_data' ) )
+		$nonce = $_POST['review_details_nonce'];
+		if ( !wp_verify_nonce( $nonce, 'review_details_data' ) )
 			return $post_id;
 
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
@@ -120,9 +155,9 @@ class CC_Customer_Review_Meta_Box {
 						$_POST[ $field['id'] ] = sanitize_text_field( $_POST[ $field['id'] ] );
 						break;
 				}
-				update_post_meta( $post_id, 'customer_information_' . $field['id'], $_POST[ $field['id'] ] );
+				update_post_meta( $post_id, 'review_details_' . $field['id'], $_POST[ $field['id'] ] );
 			} else if ( $field['type'] === 'checkbox' ) {
-				update_post_meta( $post_id, 'customer_information_' . $field['id'], '0' );
+				update_post_meta( $post_id, 'review_details_' . $field['id'], '0' );
 			}
 		}
 	}

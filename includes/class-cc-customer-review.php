@@ -13,17 +13,42 @@ class CC_Customer_Review {
      */
     public static function init() {
         $instance = self::get_instance();
-        $instance->create_post_type();
-
+        
         return $instance;
     }
 
     public static function get_instance() {
         if ( is_null( self::$instance ) ) {
             self::$instance = new self();
+            self::$instance->create_post_type();
+            self::$instance->manage_custom_columns();
         }
 
         return self::$instance;
+    }
+
+    public function manage_custom_columns() {
+        add_filter( 'manage_cc_customer_review_posts_columns', function( $columns ) {
+            unset( $columns['date'] );
+
+            $columns['name'] = __('Name', 'cart66');
+            $columns['sku'] = __('SKU', 'cart66');
+            $columns['email'] = __('Email', 'cart66');
+            $columns['rating'] = __('Rating', 'cart66');
+            $columns['status'] = __('Status', 'cart66');
+
+            return $columns;
+        });
+
+        add_action( 
+            'manage_cc_customer_review_posts_custom_column',
+            function( $column, $post_id ) {
+                $value = get_post_meta( $post_id, 'review_details_' . $column, true );
+                echo $value;
+            },
+            10,
+            2
+        );
     }
 
     public function create_post_type() {
@@ -50,6 +75,7 @@ class CC_Customer_Review {
             'hierarchcical' => false,
             'capability_type' => 'post',
             'public' => true,
+            'publicly_queryable' => false,
             'has_archive' => false,
             'rewrite' => array( 'slug' => 'reviews' ),
             'menu_position' => 30,
