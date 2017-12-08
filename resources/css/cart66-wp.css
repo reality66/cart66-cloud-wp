@@ -113,6 +113,7 @@
   background: url(../images/cart-icon-dark.png);
   background-repeat: no-repeat;
   background-position: 0px 0px;
+  background-size: auto 18px;
 }
 
 li.cc-cart-nav-light a, 
@@ -120,6 +121,7 @@ li.cc-cart-nav-light a,
   background: url(../images/cart-icon-light.png);
   background-repeat: no-repeat;
   background-position: 0px 0px;
+  background-size: auto 18px;
 }
 
 .cc-cart-count {
