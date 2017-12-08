@@ -5,7 +5,15 @@
     </h3>
 
     <div class="cc_product_review_rating">
-        <p>Rating: <?php echo $review->rating; ?></p>
+        <?php 
+            for( $i = 0; $i < $review->rating; $i++ ) {
+                echo '<span class="cc_product_review_star">&#9733</span>';
+            }
+        ?>
+        
+        <span class="cc_product_review_date">
+            <?php echo date('F d, Y', strtotime($review->date) ); ?>
+        </span>
     </div>
 
     <div class="cc_product_review_content">

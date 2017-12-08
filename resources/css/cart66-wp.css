@@ -148,3 +148,17 @@ li.cc-cart-nav-light a,
 .cc_product_review .cc_product_review_name p::before {
   content: "\2014";
 }
+
+.cc_product_review_rating {
+  margin-bottom: 10px;
+}
+.cc_product_review_star {
+  color: #f7c143;
+  padding-right: 3px;
+}
+
+.cc_product_review_date {
+  color: #656565;
+  padding: 3px 0px 10px 0px;
+  font-size: 0.8em;
+}

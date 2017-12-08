@@ -248,6 +248,7 @@ class CC_Shortcode_Manager {
     public static function cc_product_reviews( $args, $content ) {
         // Make sure the product sku is provided
         if ( ! isset( $args['sku'] ) || empty( $args['sku'] ) ) {
+            CC_Log::write( 'Not rendering cc_product_shortcode because SKU not provided.' );
             return;
         }
 
