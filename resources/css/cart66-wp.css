@@ -130,3 +130,19 @@ li.cc-cart-nav-light a,
 .single-cc_product .entry-meta {
   display: none;
 }
+
+/** Style the reviews **/
+.cc_product_review {
+  max-width: 600px;
+  border-bottom: 1px solid #efefef;
+} 
+
+.cc_product_review .cc_product_review_name p {
+  text-align: right;
+  font-style: italic;
+  padding: 10px 20px 10px 0px;
+}
+
+.cc_product_review .cc_product_review_name p::before {
+  content: "\2014";
+}

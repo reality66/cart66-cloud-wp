@@ -13,6 +13,7 @@ class CC_Shortcode_Manager {
         add_shortcode( 'cc_cart_item_count',      array( 'CC_Shortcode_Manager', 'cc_cart_item_count' ) );
         add_shortcode( 'cc_cart_subtotal',        array( 'CC_Shortcode_Manager', 'cc_cart_subtotal' ) );
         add_shortcode( 'cc_product_catalog',      array( 'CC_Shortcode_Manager', 'cc_product_catalog' ) );
+        add_shortcode( 'cc_product_reviews',      array( 'CC_Shortcode_Manager', 'cc_product_reviews' ) );
     }
 
     public static function cc_product( $args, $content ) {
@@ -244,4 +245,36 @@ class CC_Shortcode_Manager {
         return $cart->subtotal();
     }
 
+    public static function cc_product_reviews( $args, $content ) {
+        // Make sure the product sku is provided
+        if ( ! isset( $args['sku'] ) || empty( $args['sku'] ) ) {
+            return;
+        }
+
+        $out = '';
+        $sku = $args['sku'];
+
+        $query = new WP_Query( [ 
+            'post_type' => 'cc_customer_review', 
+            'meta_key' => 'review_details_sku', 
+            'meta_value' => $sku
+        ] );
+
+        if ( $query->have_posts() ) {
+            while ( $query->have_posts() ) {
+                $query->the_post();
+
+                // Get the post id of the review custom post type
+                $review_post = $query->post;
+
+                // Load the review info into an object
+                $review = new CC_Product_Review();
+                $review->load( $review_post->ID );
+
+                $out .= CC_View::get( CC_PATH . 'views/product-review.php', [ 'review' => $review ] );
+            }
+        }
+
+        return $out;
+    }
 }
