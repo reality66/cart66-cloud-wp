@@ -60,22 +60,27 @@ final class Cart66_Cloud {
         add_action( 'init', array('CC_Customer_Review', 'init') );
 
         // Add actions to process all add to cart requests via ajax
-        add_action( 'wp_enqueue_scripts',                 'cc_enqueue_ajax_add_to_cart' );
-        add_action( 'wp_enqueue_scripts',                 'cc_enqueue_cart66_wordpress_js' );
-        add_action( 'wp_enqueue_scripts',                 'cc_enqueue_cart66_styles' );
-        add_action( 'wp_enqueue_scripts',                 'cc_enqueue_featherlight' );
+        add_action( 'wp_enqueue_scripts',  'cc_enqueue_ajax_add_to_cart' );
+        add_action( 'wp_enqueue_scripts',  'cc_enqueue_cart66_wordpress_js' );
+        add_action( 'wp_enqueue_scripts',  'cc_enqueue_cart66_styles' );
+        add_action( 'wp_enqueue_scripts',  'cc_enqueue_cart66_review_scripts' );
+        add_action( 'wp_enqueue_scripts',  'cc_enqueue_featherlight' );
 
-        add_action( 'wp_ajax_cc_ajax_add_to_cart',        array('CC_Cart', 'ajax_add_to_cart') );
-        add_action( 'wp_ajax_nopriv_cc_ajax_add_to_cart', array('CC_Cart', 'ajax_add_to_cart') );
+        // AJAX hooks
+        add_action( 'wp_ajax_cc_ajax_add_to_cart',        ['CC_Cart', 'ajax_add_to_cart'] );
+        add_action( 'wp_ajax_nopriv_cc_ajax_add_to_cart', ['CC_Cart', 'ajax_add_to_cart'] );
 
-        add_action( 'wp_ajax_cc_ajax_get_cart_count',          array('CC_Cart', 'ajax_get_cart_count') );
-        add_action( 'wp_ajax_nopriv_cc_ajax_get_cart_count',   array('CC_Cart', 'ajax_get_cart_count') );
+        add_action( 'wp_ajax_cc_ajax_get_cart_count',        ['CC_Cart', 'ajax_get_cart_count'] );
+        add_action( 'wp_ajax_nopriv_cc_ajax_get_cart_count', ['CC_Cart', 'ajax_get_cart_count'] );
+
+        add_action( 'wp_ajax_cc_save_product_review',        ['CC_Product_Review', 'ajax_save_review'] );
+        add_action( 'wp_ajax_nopriv_cc_save_product_review', ['CC_Product_Review', 'ajax_save_review'] );
 
         // Check if request is a page slurp
-        add_action( 'template_redirect', array('CC_Page_Slurp', 'check_slurp') );
+        add_action( 'template_redirect', ['CC_Page_Slurp', 'check_slurp'] );
 
         // Preload cart summary if available, otherwise drop unknown carts
-        add_action( 'template_redirect', array('CC_Cart', 'preload_summary') );
+        add_action( 'template_redirect', ['CC_Cart', 'preload_summary'] );
 
         // Register sidebar widget
         add_action ('widgets_init', function() {

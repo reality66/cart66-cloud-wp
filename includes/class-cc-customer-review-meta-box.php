@@ -11,9 +11,9 @@ class CC_Customer_Review_Meta_Box {
 			'label' => 'Status',
 			'type' => 'select',
 			'options' => array(
-				'pending',
-				'approved',
-				'denied',
+				'pending' => 'pending',
+				'approved' => 'approved',
+				'denied' => 'denied',
 			),
 		),
 		array(
@@ -90,16 +90,18 @@ class CC_Customer_Review_Meta_Box {
 			$db_value = get_post_meta( $post->ID, 'review_details_' . $field['id'], true );
 			switch ( $field['type'] ) {
 				case 'select':
+					CC_Log::write( 'Generating Select Box For Field ID: ' . $field['id'] . ' DBValue: ' . $db_value );
 					$input = sprintf(
 						'<select id="%s" name="%s">',
 						$field['id'],
 						$field['id']
 					);
 					foreach ( $field['options'] as $key => $value ) {
-						$field_value = !is_numeric( $key ) ? $key : $value;
+						// $field_value = !is_numeric( $key ) ? $key : $value;
+						$field_value = $key;
 						$input .= sprintf(
 							'<option %s value="%s">%s</option>',
-							$db_value === $field_value ? 'selected' : '',
+							$db_value == $field_value ? 'selected' : '',
 							$field_value,
 							$value
 						);
@@ -118,6 +120,7 @@ class CC_Customer_Review_Meta_Box {
 			}
 			$output .= $this->row_format( $label, $input );
 		}
+		
 		echo '<table class="form-table"><tbody>' . $output . '</tbody></table>';
 	}
 

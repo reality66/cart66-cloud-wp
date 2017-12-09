@@ -14,6 +14,7 @@ class CC_Shortcode_Manager {
         add_shortcode( 'cc_cart_subtotal',        array( 'CC_Shortcode_Manager', 'cc_cart_subtotal' ) );
         add_shortcode( 'cc_product_catalog',      array( 'CC_Shortcode_Manager', 'cc_product_catalog' ) );
         add_shortcode( 'cc_product_reviews',      array( 'CC_Shortcode_Manager', 'cc_product_reviews' ) );
+        add_shortcode( 'cc_product_review_form',  array( 'CC_Shortcode_Manager', 'cc_product_review_form' ) );
     }
 
     public static function cc_product( $args, $content ) {
@@ -277,5 +278,17 @@ class CC_Shortcode_Manager {
         }
 
         return $out;
+    }
+
+    public static function cc_product_review_form( $args, $content ) {
+        // Make sure the product sku is provided
+        if ( ! isset( $args['sku'] ) || empty( $args['sku']) ) {
+            return;
+        }
+
+        $sku = $args['sku'];
+        $view = CC_View::get( CC_PATH . 'views/product-review-form.php', [ 'sku' => $sku ] );
+
+        return $view;
     }
 }

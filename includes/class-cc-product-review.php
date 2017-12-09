@@ -31,4 +31,29 @@ class CC_Product_Review extends CC_Model {
         $this->date = $post->post_date;
     }
 
+    public function ajax_save_review() {
+        $review = $_REQUEST['review'];
+
+        $post_data = [
+            'post_type' => 'cc_customer_review',
+            'post_content' => $review['content'],
+            'post_title' => $review['title'],
+            'post_status' => 'publish',
+            'meta_input' => [
+                'review_details_status' => 'pending',
+                'review_details_rating' => $review['rating'],
+                'review_details_name' => $review['name'],
+                'review_details_email' => $review['email'],
+                'review_details_sku' => $review['sku'],
+            ]
+        ];
+
+        $post_id = wp_insert_post( $post_data );
+
+        CC_Log::write( "Created new customer review post: $post_id" );
+        echo $post_id;
+
+        die();
+    }
+
 }

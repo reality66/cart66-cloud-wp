@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Regsiter post type: cc_customer_reviews
+ * Regsiter post type: cc_customer_review
  */
 class CC_Customer_Review {
 

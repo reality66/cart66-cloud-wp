@@ -124,12 +124,34 @@ function cc_enqueue_cart66_styles() {
 }
 
 /**
+ * Enqueue cart66 form styles
+ */
+function cc_enqueue_cart66_review_scripts() {
+    $url = cc_url();
+    wp_enqueue_style( 'cart66-wp-form', $url . 'resources/css/cart66-wp-form.css');
+    wp_enqueue_script( 'cart66-review-js', $url . 'resources/js/cart66-review.js' );
+
+    $ajax_url = admin_url('admin-ajax.php');
+    wp_localize_script('cart66-review-js', 'cc_review', ['ajax_url' => $ajax_url] );
+}
+
+/**
  * Enqueue featherlight feature for gallery
  */
 function cc_enqueue_featherlight() {
     if ( cc_page_has_products() ) {
-        wp_enqueue_style ( 'featherlight-styles', '//cdn.rawgit.com/noelboss/featherlight/1.2.2/release/featherlight.min.css' );
-        wp_enqueue_script( 'featherlight', '//cdn.rawgit.com/noelboss/featherlight/1.2.2/release/featherlight.min.js', array( 'jquery' ), '', true );
+        wp_enqueue_style ( 
+            'featherlight-styles', 
+            '//cdn.rawgit.com/noelboss/featherlight/1.2.2/release/featherlight.min.css' 
+        );
+        
+        wp_enqueue_script( 
+            'featherlight', 
+            '//cdn.rawgit.com/noelboss/featherlight/1.2.2/release/featherlight.min.js', 
+            ['jquery'], 
+            '', 
+            true 
+        );
     }
 }
 
