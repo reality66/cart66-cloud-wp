@@ -5,11 +5,12 @@ class CC_Admin {
     public static $tabs;
 
     public function __construct() {
-        self::$tabs = array( 'main-settings', 'post-type-settings', 'info' );
+        self::$tabs = array( 'main-settings', 'review-settings', 'post-type-settings', 'info' );
 
-        // Initialize the main settings for Cart66
-        CC_Admin_Main_Settings::init( 'cart66', 'cart66_main_settings' );
-        CC_Admin_Post_Type_Settings::init( 'cart66', 'cart66_post_type_settings' );
+        // Initialize the settings pages
+        CC_Admin_Main_Settings::init();
+        CC_Admin_Review_Settings::init();
+        CC_Admin_Post_Type_Settings::init();
 
         // Add the main cart66 admin pages to the menu
         add_action( 'admin_menu', array( $this, 'add_menu_pages' ) );
@@ -51,6 +52,7 @@ class CC_Admin {
         $default_tab = self::$tabs[0]; // The first tab is the deafault tab
         $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : $default_tab;
         $tab = in_array( $tab, self::$tabs ) ? $tab : $default_tab;
+
         return $tab;
     }
 
