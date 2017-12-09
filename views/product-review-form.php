@@ -65,5 +65,5 @@
 </form>
 
 <div id="cc-product-review-received">
-    Thank you for submitting your review.
+    <?php echo $thank_you_message; ?> 
 </div>

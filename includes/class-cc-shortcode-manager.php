@@ -287,7 +287,19 @@ class CC_Shortcode_Manager {
         }
 
         $sku = $args['sku'];
-        $view = CC_View::get( CC_PATH . 'views/product-review-form.php', [ 'sku' => $sku ] );
+
+        $thank_you_message = CC_Admin_Setting::get_option( 'cart66_review_settings', 'review_thank_you', 'Thank you for submitting your review' );
+        $site_key = CC_Admin_Setting::get_option( 'cart66_review_settings', 'site_key' );
+        $secret_key = CC_Admin_Setting::get_option( 'cart66_review_settings', 'secret_key' );
+
+        $view = CC_View::get( CC_PATH . 'views/product-review-form.php', 
+            [ 
+                'sku' => $sku,
+                'thank_you_message' => $thank_you_message,
+                'site_key' => $site_key,
+                'secret_key' => $secret_key
+            ] 
+        );
 
         return $view;
     }
