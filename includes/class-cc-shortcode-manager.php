@@ -262,6 +262,9 @@ class CC_Shortcode_Manager {
             'meta_value' => $sku
         ] );
 
+        $show_reviews = CC_Admin_Setting::get_option( 'cart66_review_settings', 'show_reviews', 'approved' );
+        $show = explode( '_', $show_reviews );
+
         if ( $query->have_posts() ) {
             while ( $query->have_posts() ) {
                 $query->the_post();
@@ -273,7 +276,10 @@ class CC_Shortcode_Manager {
                 $review = new CC_Product_Review();
                 $review->load( $review_post->ID );
 
-                $out .= CC_View::get( CC_PATH . 'views/product-review.php', [ 'review' => $review ] );
+                if ( in_array($review->status, $show) ) {
+                    $out .= CC_View::get( CC_PATH . 'views/product-review.php', [ 'review' => $review ] );
+                }
+
             }
         }
 
