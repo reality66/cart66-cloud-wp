@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
   $('#cc-product-review-form').on('submit', function(e) {
     e.preventDefault();
-    $('#cc-review-processing').toggle();
+    $('#cc-review-processing').show();
     var data = $(this).serialize();
 
     $.ajax({
@@ -11,9 +11,14 @@ jQuery(document).ready(function($) {
       data: data,
       dataType: 'html',
       success: function( result ) {
+        $('#cc-product-review-failed').hide();
         $('#cc-product-review-received').show( "slow" );
-        $('#cc-review-processing').toggle();
+        $('#cc-review-processing').hide();
         $('#cc-product-review-form')[0].reset();
+      },
+      error: function( ) {
+        $('#cc-product-review-failed').show( "slow" );
+        $('#cc-review-processing').hide();
       }
     });
 

@@ -32,6 +32,22 @@ class CC_Product_Review extends CC_Model {
     }
 
     public function ajax_save_review() {
+
+        // Validate the reCAPTCHA if it is enabeled before saving the reivew
+        $site_key = CC_Admin_Setting::get_option( 'cart66_recaptcha_settings', 'site_key', false );
+
+        if ( $site_key ) {
+            $response = $_REQUEST['g-recaptcha-response'];
+            $valid = cc_validate_recaptcha_response( $response );
+
+            if ( ! $valid ) {
+                // Unable to process the request because the reCAPTCHA validation failed
+                status_header('422');
+                exit();
+            }
+        }
+
+        // Save the review if the reCAPTHCA validation passes
         $review = $_REQUEST['review'];
 
         $post_data = [

@@ -10,6 +10,7 @@
   margin: 20px 0px 20px 0px;
 }
 
+#cc-product-review-failed,
 #cc-product-review-received {
   border: 1px solid #cccccc;
   background-color: #f3f3f3;
@@ -17,6 +18,12 @@
   padding: 20px 30px;
   width: auto;
   display: none;
+}
+
+#cc-product-review-failed {
+  background-color: #db4c3f;
+  color: #f3f3f3;
+  border:none;
 }
 
 #cc-review-processing {

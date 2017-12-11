@@ -133,6 +133,12 @@ function cc_enqueue_cart66_review_scripts() {
 
     $ajax_url = admin_url('admin-ajax.php');
     wp_localize_script('cart66-review-js', 'cc_review', ['ajax_url' => $ajax_url] );
+
+    // If reCAPTCHA site key is present, enqueue the reCAPTCHA script
+    $site_key = CC_Admin_Setting::get_option( 'cart66_recaptcha_settings', 'site_key', false );
+    if ( $site_key ) {
+        wp_enqueue_script( 'cart66-recaptcha', 'https://www.google.com/recaptcha/api.js' );
+    }
 }
 
 /**

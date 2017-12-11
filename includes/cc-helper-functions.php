@@ -213,3 +213,33 @@ function cc_plugin_info() {
 
     return $data;
 }
+
+/**
+ * Return TRUE if the recaptcha response if valide, otherwise false.
+ * 
+ * @param string: The Google recaptcha client side response
+ * @return boolean
+ */
+function cc_validate_recaptcha_response( $response ) {
+    $verify_url = 'https://www.google.com/recaptcha/api/siteverify';
+    $secret_key = CC_Admin_Setting::get_option( 'cart66_recaptcha_settings', 'secret_key' );
+
+    $result = wp_remote_post( 
+        $verify_url,
+        [
+            'method' => 'POST',
+            'timeout' => 45,
+            'body' => [
+                'secret' => $secret_key,
+                'response' => $response,
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            ]
+        ]
+    );
+
+    $result = json_decode( $result['body'] );
+
+    CC_Log::write( 'reCAPTCHA validation result body decoded: ' . print_r( $result, true ) );
+
+    return ( $result->success ) ? TRUE : FALSE;
+}

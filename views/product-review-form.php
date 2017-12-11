@@ -55,6 +55,8 @@
     </div>
   </div>
   
+  <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
+
   <div>
     <div>
         <input id="cart66-product-reivew-save-button" name="save_button" type="submit" value="Submit Review">
@@ -66,4 +68,9 @@
 
 <div id="cc-product-review-received">
     <?php echo $thank_you_message; ?> 
+</div>
+
+<div id="cc-product-review-failed">
+    We did not receive your review. Please be sure to check the "I'm not a robot" checkbox. <br>
+    If you need further assistance, please contact us.
 </div>
