@@ -19,6 +19,11 @@ class CC_Log {
     }
 
     public static function write( $data ) {
+        // Do NOT write to log on heartbeats
+        if ( isset( $_REQUEST['action'] ) && 'heartbeat' == $_REQUEST['action'] ) {
+            return;
+        }
+
         if ( defined( 'CC_DEBUG' ) && CC_DEBUG ) {
             self::init();
             $backtrace = debug_backtrace();
