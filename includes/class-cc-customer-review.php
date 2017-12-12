@@ -34,9 +34,9 @@ class CC_Customer_Review {
         } );
 
         add_filter('bulk_actions-edit-cc_customer_review', function ( $actions ) {
-            $actions['approve_reviews'] = 'Approve Reviews';
-            $actions['deny_reviews'] = 'Deny Reviews';
-            $actions['pend_reviews'] = 'Set To Pending';
+            $actions['approve_reviews'] = 'Approve';
+            $actions['deny_reviews'] = 'Deny';
+            $actions['pend_reviews'] = 'Pending';
 
             return $actions;
         } );
