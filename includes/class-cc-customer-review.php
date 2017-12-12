@@ -22,9 +22,54 @@ class CC_Customer_Review {
             self::$instance = new self();
             self::$instance->create_post_type();
             self::$instance->manage_custom_columns();
+            self::$instance->custom_bulk_actions();
         }
 
         return self::$instance;
+    }
+
+    public function custom_bulk_actions() {
+        add_filter( 'current_screen', function( $screen ) {
+            CC_Log::write( 'Current screen: ' . print_r( $screen, true ) );
+        } );
+
+        add_filter('bulk_actions-edit-cc_customer_review', function ( $actions ) {
+            $actions['approve_reviews'] = 'Approve Reviews';
+            $actions['deny_reviews'] = 'Deny Reviews';
+            $actions['pend_reviews'] = 'Set To Pending';
+
+            return $actions;
+        } );
+
+        add_filter('handle_bulk_actions-edit-cc_customer_review', 
+            function ( $redirect_to, $do_action, $post_ids ) {
+                CC_Log::write( "Redirect to: $redirect_to :: Do Action: $do_action :: Post IDs: " . print_r( $post_ids, true ) );
+
+                foreach ( $post_ids as $post_id ) {
+                    $status = false;
+
+                    switch ( $do_action ) {
+                        case 'approve_reviews':
+                            $status = 'approved';
+                            break;
+                        case 'deny_reviews':
+                            $status = 'denied';
+                            break;
+                        case 'pend_reviews':
+                            $status = 'pending';
+                            break;
+                    }
+
+                    if ( $status ) {
+                        update_post_meta( $post_id, 'review_details_status', $status );
+                    }
+                }
+                
+                return $redirect_to;
+            },
+            10,
+            3
+        );
     }
 
     public function manage_custom_columns() {
