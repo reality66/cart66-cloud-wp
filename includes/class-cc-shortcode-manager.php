@@ -266,6 +266,9 @@ class CC_Shortcode_Manager {
         $show = explode( '_', $show_reviews );
 
         if ( $query->have_posts() ) {
+            $counter = 0;
+            $rating_total = 0;
+
             while ( $query->have_posts() ) {
                 $query->the_post();
 
@@ -277,10 +280,21 @@ class CC_Shortcode_Manager {
                 $review->load( $review_post->ID );
 
                 if ( in_array($review->status, $show) ) {
+                    $counter++;
+                    $rating_total += $review->rating;
+
                     $out .= CC_View::get( CC_PATH . 'views/product-review.php', [ 'review' => $review ] );
                 }
 
+                $average = round( $rating_total / $counter, 1 );
+                $average_view = CC_View::get( CC_PATH . 'views/product-review-average.php', [ 
+                    'average' => $average, 
+                    'total' => $counter 
+                ] );
             }
+
+            $out = $average_view . $out;
+
         }
 
         return $out;

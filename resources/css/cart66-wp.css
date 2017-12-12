@@ -134,30 +134,38 @@ li.cc-cart-nav-light a,
 }
 
 /** Style the reviews **/
-.cc_product_review {
+.cc-product-review-average {
+  max-width: 600px;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  padding: 10px 0px 10px 0px;
+}
+
+.cc-product-review {
   max-width: 600px;
   border-bottom: 1px solid #efefef;
 } 
 
-.cc_product_review .cc_product_review_name p {
+.cc-product-review .cc-product-review-name p {
   text-align: right;
   font-style: italic;
   padding: 10px 20px 10px 0px;
 }
 
-.cc_product_review .cc_product_review_name p::before {
+.cc-product-review .cc-product-review-name p::before {
   content: "\2014";
 }
 
-.cc_product_review_rating {
+.cc-product-review-rating {
   margin-bottom: 10px;
 }
-.cc_product_review_star {
+
+.cc-product-review-star {
   color: #f7c143;
   padding-right: 3px;
 }
 
-.cc_product_review_date {
+.cc-product-review-small-text {
   color: #656565;
   padding: 3px 0px 10px 0px;
   font-size: 0.8em;

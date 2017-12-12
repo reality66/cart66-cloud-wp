@@ -1,26 +1,26 @@
-<div class="cc_product_review">
+<div class="cc-product-review">
 
-    <h3 class="cc_product_reivew_title">
+    <h3 class="cc-product-reivew-title">
         <?php echo $review->title; ?>
     </h3>
 
-    <div class="cc_product_review_rating">
+    <div class="cc-product-review-rating">
         <?php 
             for( $i = 0; $i < $review->rating; $i++ ) {
-                echo '<span class="cc_product_review_star">&#9733</span>';
+                echo '<span class="cc-product-review-star">&#9733</span>';
             }
         ?>
         
-        <span class="cc_product_review_date">
+        <span class="cc-product-review-date">
             <?php echo date('F d, Y', strtotime($review->date) ); ?>
         </span>
     </div>
 
-    <div class="cc_product_review_content">
+    <div class="cc-product-review-content">
         <?php echo wpautop( $review->content ); ?>
     </div>
 
-    <div class="cc_product_review_name">
+    <div class="cc-product-review-name">
         <p><?php echo $review->name; ?></p>
     </div>
 
