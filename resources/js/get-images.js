@@ -41,7 +41,13 @@ jQuery(document).ready(function($) {
             $('input[name="' + formfield + '"]').val(matches[1]);
       
             var imgfull = $(html).first('img').css( { "width":"100px", "height":"100px"} );
-            //var imgfull = $(html).find('img:first').css( { "width":"100px", "height":"100px"} );
+            
+            /** DBG **/
+            console.log( 'Img Full' + imgfull );
+
+            var imgfull = $(html).find('img:first').css( { "width":"100px", "height":"100px"} );
+            
+            /** DBG **/
             console.log( $(imgfull) );
 
             $('.img-preview[data-num="'+num+'"]').append( $(imgfull) );
