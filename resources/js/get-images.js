@@ -35,20 +35,15 @@ jQuery(document).ready(function($) {
         var fileurl;
 
         if (formfield !== null) {
-            console.log( $(html) );
+            console.log( 'HTML: ' + $(html) );
             var matches = html.match(/wp-image-([0-9]*)/);
 
             $('input[name="' + formfield + '"]').val(matches[1]);
       
             var imgfull = $(html).first('img').css( { "width":"100px", "height":"100px"} );
             
-            /** DBG **/
-            console.log( 'Img Full' + imgfull );
-
-            var imgfull = $(html).find('img:first').css( { "width":"100px", "height":"100px"} );
-            
-            /** DBG **/
-            console.log( $(imgfull) );
+            /** DBG: Alternate JS to populate image gallery admin box **/
+            //var imgfull = $(html).find('img:first').css( { "width":"100px", "height":"100px"} );
 
             $('.img-preview[data-num="'+num+'"]').append( $(imgfull) );
 
