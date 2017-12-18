@@ -104,6 +104,14 @@ class CC_Admin_Main_Settings extends CC_Admin_Setting {
         $product_post_types->description = __( 'Select post types that will contain product order forms', 'cart66' );
         $main_section->add_field( $product_post_types );
 
+        // Product catalog button style
+        $catalog_buttons = new CC_Admin_Settings_Radio_Buttons( __( 'Catalog Button Style', 'cart66' ), 'catalog_button_style' );
+        $catalog_buttons->new_option( __( 'Classic Cart66 Buttons', 'cart66' ), 'cc-button-primary', true );
+        $catalog_buttons->new_option( __( 'Make Theme Buttons', 'cart66' ), 'ttfmake-button', false );
+        $catalog_buttons->new_option( __( 'No Styles', 'cart66' ), 'cc-button-custom', false );
+        $catalog_buttons->set_selected( $option_values['catalog_button_style'] );
+        $main_section->add_field( $catalog_buttons );
+
         // Add custom css field
         $css = $option_values[ 'custom_css' ];
         $custom_css = new CC_Admin_Settings_Text_Area( __('Custom CSS', 'cart66'), 'custom_css', $css );

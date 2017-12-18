@@ -1,11 +1,6 @@
 /** product grid **/
 
 ul.cc-product-list {
-    /*
-    float: left;
-    margin-bottom: 35px;
-    */
-
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -14,14 +9,14 @@ ul.cc-product-list {
     flex-wrap: wrap;
     flex-direction: row;
     margin-bottom: 35px;
+    text-align: center;
 }
 
 ul.cc-product-list li {
-    display: block;
-    float: left;
+    display: table;
     width: 250px;
     min-height: 250px;
-    margin: 0px 15px 35px 15px;
+    margin: 0px auto 30px auto;
     padding: 0px 10px 0px 10px;
 }
 
@@ -180,4 +175,14 @@ ul.cc-product-list .cc-button-primary:active {
 /** Lift featherlight up a little more **/
 .featherlight {
   z-index: 99;
+}
+
+/** 
+ * Product catalog
+ */
+ul.cc-product-list {
+}
+
+ul.cc-product-list li.cc-product-grid-item {
+  text-align: center;
 }
