@@ -108,7 +108,8 @@ class CC_Admin_Main_Settings extends CC_Admin_Setting {
         $catalog_buttons = new CC_Admin_Settings_Radio_Buttons( __( 'Catalog Button Style', 'cart66' ), 'catalog_button_style' );
         $catalog_buttons->new_option( __( 'Classic Cart66 Buttons', 'cart66' ), 'cc-button-primary', true );
         $catalog_buttons->new_option( __( 'Make Theme Buttons', 'cart66' ), 'ttfmake-button', false );
-        $catalog_buttons->new_option( __( 'No Styles', 'cart66' ), 'cc-button-custom', false );
+        $catalog_buttons->new_option( __( 'Custom Style', 'cart66' ), 'cc-button-custom', false );
+        $catalog_buttons->description = ( 'If you choose Custom Style, the catalog buttons will have a class of <code>cc-button-custom</code> that you can use to define your own styles.');
         $catalog_buttons->set_selected( $option_values['catalog_button_style'] );
         $main_section->add_field( $catalog_buttons );
 
