@@ -16,6 +16,7 @@ ul.cc-product-list li {
     display: table;
     width: 250px;
     min-height: 250px;
+    min-width: 250px;
     margin: 0px auto 30px auto;
     padding: 0px 10px 0px 10px;
 }
