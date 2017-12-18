@@ -108,11 +108,12 @@
   font-size: 14px;
   font-weight: bold;
   height: 20px;
+  line-height: 20px;
   padding-left: 34px;
   display: inline-block;
   background: url(../images/cart-icon-dark.png);
   background-repeat: no-repeat;
-  background-position: 10px 10px;
+  background-position: 0px 0px;
   background-size: auto 18px;
 }
 
@@ -120,7 +121,7 @@ li.cc-cart-nav-light a,
 .cc-cart-link-light {
   background: url(../images/cart-icon-light.png);
   background-repeat: no-repeat;
-  background-position: 10px 10px;
+  background-position: 0px 0px;
   background-size: auto 18px;
 }
 
