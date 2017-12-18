@@ -295,7 +295,9 @@ class CC_Shortcode_Manager {
             }
 
             $out = $average_view . $out;
-
+        }
+        else {
+            $out = 'There are no customer reviews yet.';
         }
 
         return $out;
