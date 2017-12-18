@@ -26,6 +26,8 @@
         </p>
     <?php endif; ?>
 
-    <a class="cc-button-primary" href="<?php echo get_permalink(); ?>" title="<?php the_title(); ?>"><?php echo CC_Admin_Setting::get_option( 'cart66_labels', 'view'); ?></a>
+    <a class="<?php echo CC_Admin_Setting::get_option('cart66_main_settings', 'catalog_button_style', 'cc-button-primary'); ?>" 
+       href="<?php echo get_permalink(); ?>" 
+       title="<?php the_title(); ?>"><?php echo CC_Admin_Setting::get_option( 'cart66_labels', 'view'); ?></a>
 
 </li>
