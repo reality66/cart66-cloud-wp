@@ -15,6 +15,7 @@ class CC_Shortcode_Manager {
         add_shortcode( 'cc_product_catalog',      array( 'CC_Shortcode_Manager', 'cc_product_catalog' ) );
         add_shortcode( 'cc_product_reviews',      array( 'CC_Shortcode_Manager', 'cc_product_reviews' ) );
         add_shortcode( 'cc_product_review_form',  array( 'CC_Shortcode_Manager', 'cc_product_review_form' ) );
+        add_shortcode( 'cc_product_gallery',      array( 'CC_Shortcode_Manager',  'cc_product_gallery') );
     }
 
     public static function cc_product( $args, $content ) {
@@ -320,5 +321,40 @@ class CC_Shortcode_Manager {
         );
 
         return $view;
+    }
+
+    public static function cc_product_gallery( $args, $content ) {
+        $sku = 0;
+        $post_id = 0;
+
+        // Look for post_id or sku
+        if ( isset( $args['post_id'] ) ) {
+            $post_id = $args['post_id'];
+        }
+        elseif ( isset( $args['sku']) ) {
+            $sku = $args['sku'];
+            $post_id = cc_post_id_by_sku( $sku );
+        }
+
+        $view = 'Product Gallery Not Found';
+
+        if ( $post_id > 0 ) {
+            $thumbs = cc_get_product_thumb_sources( $post_id );
+            $images = cc_get_product_gallery_image_sources( $post_id, false );
+
+            if ( count( $images ) > 0 ) {
+                $data = array( 'images' => $images, 'thumbs' => $thumbs );
+                $view = CC_View::get( CC_PATH . 'views/product-gallery.php', $data );
+                wp_enqueue_script( 'cc-gallery-toggle', CC_URL . 'resources/js/gallery-toggle.js', ['jquery'] );
+            }
+            else {
+                CC_Log::write("Looking for gallery images for post id ($post_id) but none where found: " . print_r( $images, true ) );
+            }
+        }
+        else {
+            CC_Log::write( "Looking for post id by sku ($sku) and post not found: $post_id");
+        }
+
+        return $view; 
     }
 }

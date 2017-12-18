@@ -243,3 +243,38 @@ function cc_validate_recaptcha_response( $response ) {
 
     return ( $result->success ) ? TRUE : FALSE;
 }
+
+/** 
+ * Return the post id of the first cc_product post type that 
+ * is assigned the given product sku. If not product is found
+ * return 0.
+ * 
+ * @return int post id or 0
+ */
+function cc_post_id_by_sku( $sku ) {   
+    $post_id = 0;
+
+    $args = array(
+        'post_type'     =>  'cc_product',
+        'meta_query'    =>  array(
+            array(
+                'key' => '_cc_product_sku',
+                'value' =>  $sku
+            )
+        )
+    );
+
+    $cc_query = new WP_Query( $args );
+
+    if( $cc_query->have_posts() ) {
+      while( $cc_query->have_posts() ) {
+        $cc_query->the_post();
+        $post_id = get_the_id();
+        break;
+      }
+    }
+
+    wp_reset_postdata();
+
+    return $post_id;
+}
