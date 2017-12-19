@@ -24,7 +24,7 @@ final class Cart66_Cloud {
         define( 'CC_PATH', WP_PLUGIN_DIR . '/' . $plugin_dir . '/' );
         define( 'CC_URL',  WP_PLUGIN_URL . '/' . $plugin_dir . '/' );
         define( 'CC_TEMPLATE_DEBUG_MODE', false );
-        define( 'CC_VERSION_NUMBER', '2.0.20' );
+        define( 'CC_VERSION_NUMBER', '2.1.0' );
     }
 
     private function include_core_files() {

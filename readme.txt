@@ -5,7 +5,7 @@ Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, d
 Requires at least: 4.0
 Requires PHP: 5.4
 Tested up to: 4.9
-Stable tag: 2.0.20
+Stable tag: 2.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -137,6 +137,20 @@ PageSlurp is the technology that we invented to provide a secure and PCI complia
 PCI Compliance is a set of requirements that your business needs to meet in order to accept credit card payments. If you are using Cart66 Cloud for your e-commerce, then your website is PCI compliant. If you are not using Cart66 Cloud then you need to handle all of the PCI requirements on your own. Becoming PCI compliant on your own is very expensive and challenging. For more information about PCI compliance, see [What you need to know about PCI compliance](https://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance").
 
 == Changelog ==
+
+= 2.1.0 =
+
+- New: Add CSS class .cc-cart-link-light and .cc-cart-link-dark to style buttons that have a shopping cart icon in the background.
+- New: Add CSS class .cc-cart-count to dynamically show links with the curent item count in the cart
+- New: Add JS hooked to .cc-cart-count elements to display the number of items in the cart (via AJAX to prevent caching problems).
+- New: Collect and display 5 star customer reviews
+- New: Add shortcode cc_product_gallery to display product image galleries anywhere you want.
+- New: Add shortcode cc_product_reviews to display 5 star customer reviews for any product anywhere you want.
+- New: Add shortcode cc_product_review_form to collect 5 star customer reviews 
+- New: Add setting to choose Cart66 catalog button styles
+- Update: Optimize inclusion of script libraries
+- Update: Keep log files smaller by not logging on WordPress heartbeats
+- Update: Improve the display of the Cart66 product catalog on mobile devices
 
 = 2.0.20 = 
 
