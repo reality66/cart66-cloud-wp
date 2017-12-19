@@ -35,7 +35,8 @@ class CC_Admin_Main_Settings extends CC_Admin_Setting {
             'add_to_cart_redirect_type' => '',
             'product_loader' => '',
             'product_post_types' => '',
-            'shop_name' => 'Shop',  
+            'shop_name' => 'Shop',
+            'catalog_button_style' => 'cc-button-primary',
             'custom_css' => '',
             'default_css' => 'yes',
             'debug' => ''
