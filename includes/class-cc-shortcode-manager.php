@@ -256,6 +256,9 @@ class CC_Shortcode_Manager {
 
         $out = '';
         $sku = $args['sku'];
+        $counter = 0;
+        $rating_total = 0;
+        $average_view = '';
 
         $query = new WP_Query( [ 
             'post_type' => 'cc_customer_review', 
@@ -267,9 +270,6 @@ class CC_Shortcode_Manager {
         $show = explode( '_', $show_reviews );
 
         if ( $query->have_posts() ) {
-            $counter = 0;
-            $rating_total = 0;
-
             while ( $query->have_posts() ) {
                 $query->the_post();
 
@@ -286,7 +286,9 @@ class CC_Shortcode_Manager {
 
                     $out .= CC_View::get( CC_PATH . 'views/product-review.php', [ 'review' => $review ] );
                 }
+            }
 
+            if ( $counter > 0 ) {
                 $average = round( $rating_total / $counter, 1 );
                 $average_view = CC_View::get( CC_PATH . 'views/product-review-average.php', [ 
                     'average' => $average, 
@@ -296,7 +298,8 @@ class CC_Shortcode_Manager {
 
             $out = $average_view . $out;
         }
-        else {
+        
+        if ( $counter == 0 ) {
             $out = 'There are no customer reviews yet.';
         }
 
