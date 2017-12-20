@@ -101,30 +101,56 @@
     z-index: 90; /* makes the div the second most top layer, so it’ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
 }
 
-/** Cart Nav Icon **/
+/** Cart Link **/
 
 .cc-cart-link-light,
 .cc-cart-link-dark {
   font-size: 14px;
   font-weight: bold;
-  height: 20px;
-  line-height: 20px;
-  padding-left: 34px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 40px;
   display: inline-block;
   background: url(../images/cart-icon-dark.png);
   background-repeat: no-repeat;
-  background-position: 0px 0px;
+  background-position: 10px 5px;
   background-size: auto 18px;
 }
 
+a.cc-cart-link-dark {
+  color: #555555;
+}
+
+a.cc-cart-link-dark:hover {
+  color: #000000;
+}
+
+a.cc-cart-link-light {
+  color: #dedede;
+}
+
+a.cc-cart-link-light:hover {
+  color: #ffffff;
+}
+
+/** Cart Nav Item */
+/*
 li.cc-cart-nav-light a, 
 .cc-cart-link-light {
   background: url(../images/cart-icon-light.png);
   background-repeat: no-repeat;
-  background-position: 0px 0px;
+  background-position: 10px 5px;
   background-size: auto 18px;
+  background-color: #555555;
+  height: 30px;
+  line-height: 20px;
+  color: #efefef;
+  border-radius: 3px;
+  height: 30px;
 }
+*/
 
+/** Cart Count Hook Class **/
 .cc-cart-count {
   font-weight: normal;
 }
