@@ -7,7 +7,7 @@
         }
     ?>
     <span class="cc-product-total-reviews cc-product-review-small-text">
-        <?php echo  $total; ?> customer reviews
+        <?php echo  $total; ?> customer <?php echo _n('review', 'reviews', $total); ?>
     </span>
     <br>
 
