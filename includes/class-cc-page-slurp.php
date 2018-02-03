@@ -139,6 +139,13 @@ class CC_Page_Slurp {
 
         $content = str_replace('{{cart66_content}}', $receipt, $content);
 
+        // Set title if it appears in the content
+        $title = '';
+        if ( isset( $_REQUEST['cc_page_title'] ) ) {
+            $title = $_REQUEST['cc_page_title'];
+        }
+        $content = str_replace('{{cart66_title}}', $title, $content );
+
         return $content;
     }
 
