@@ -151,6 +151,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 - Update: Optimize inclusion of script libraries
 - Update: Keep log files smaller by not logging on WordPress heartbeats
 - Update: Improve the display of the Cart66 product catalog on mobile devices
+- Update: Replace {{cart66_title}} in the content of locally rendered slurp pages
 
 = 2.0.20 = 
 
