@@ -3,8 +3,10 @@
 
         <?php if ( count( $thumbs ) > 1 ): ?>
             <div class="cc-gallery-gutter">
+                <?php $image_index = 0; ?>
                 <?php foreach( $thumbs as $key => $thumb_src ): ?>
-                    <a href="#" class="cc-gallery-thumb-link" id="cc-gallery-thumb-<?php echo $key; ?>" data-ref="cc-full-<?php echo $key; ?>"><img class="cc-gallery-thumb" src="<?php echo $thumb_src; ?>" /></a>
+                    <a href="#" class="cc-gallery-thumb-link" id="cc-gallery-thumb-<?php echo $key; ?>" data-ref="cc-full-<?php echo $key; ?>" data-index="<?php echo $image_index; ?>"><img class="cc-gallery-thumb" src="<?php echo $thumb_src; ?>" /></a>
+                    <?php $image_index += 1; ?>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
