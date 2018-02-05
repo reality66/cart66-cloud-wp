@@ -140,14 +140,16 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 = 2.1.0 =
 
+- New: Link product options with gallery images so changes the option (like color) changes the picture that is shown.
+- New: Add button to manage product review shortcodes
+- New: Add shortcode cc_product_gallery to display product image galleries anywhere you want.
+- New: Add shortcode cc_product_reviews to display 5 star customer reviews for any product anywhere you want.
+- New: Add shortcode cc_product_review_form to collect 5 star customer reviews 
 - New: Add CSS class .cc-cart-link-light and .cc-cart-link-dark to style buttons that have a shopping cart icon in the background.
 - New: Add CSS class .cc-cart-count to dynamically show links with the curent item count in the cart
 - New: Add JS hooked to .cc-cart-count elements to display the number of items in the cart (via AJAX to prevent caching problems).
 - New: Collect and display 5 star customer reviews
-- New: Add shortcode cc_product_gallery to display product image galleries anywhere you want.
-- New: Add shortcode cc_product_reviews to display 5 star customer reviews for any product anywhere you want.
-- New: Add shortcode cc_product_review_form to collect 5 star customer reviews 
-- New: Add setting to choose Cart66 catalog button styles
+- New: Add setting to choose Cart66 catalog button styles or Make Theme styles
 - Update: Optimize inclusion of script libraries
 - Update: Keep log files smaller by not logging on WordPress heartbeats
 - Update: Improve the display of the Cart66 product catalog on mobile devices
