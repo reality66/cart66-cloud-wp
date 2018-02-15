@@ -32,7 +32,8 @@ class CC_Admin_Review_Settings extends CC_Admin_Setting {
             'cart66_review_settings', 
             [
                 'show_reviews' => 'approved',
-                'review_thank_you' => 'Thank you for submitting your review.'
+                'review_thank_you' => 'Thank you for submitting your review.',
+                'notify_emails' => ''
             ] 
         );
 
@@ -50,11 +51,17 @@ class CC_Admin_Review_Settings extends CC_Admin_Setting {
         $show_reviews->set_selected( $option_values['show_reviews'] );
         $reviews_section->add_field( $show_reviews );
 
-        // Add start markup wrapper box
+        // Add review thank you message textarea
         $review_thank_you_msg = $option_values[ 'review_thank_you' ];
         $review_thanks = new CC_Admin_Settings_Text_Area( __('Thank you message', 'cart66'), 'review_thank_you', $review_thank_you_msg );
         $review_thanks->description = __( 'The message shown to the customer after new a review is submitted.', 'cart66' );
         $reviews_section->add_field( $review_thanks );
+
+        // Add email notification box
+        $email = $option_values[ 'notify_emails' ];
+        $emails = new CC_Admin_Settings_Text_Field( __('Email Notifications', 'cart66'), 'notify_emails', $email );
+        $emails->description = __( 'Get an email when a new review is submitted. <br>Leave blank if you do not want to receive an email notification.<br>You can list multiple email address separated by commas like this:<br>one@email.com, two@email.com', 'cart66' );
+        $reviews_section->add_field( $emails );
 
         // Add Post Type section to the main settings
         $this->add_section( $reviews_section );

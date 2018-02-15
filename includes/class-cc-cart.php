@@ -187,7 +187,14 @@ class CC_Cart {
 
     public static function item_count() {
         self::load_summary();
-        return self::$cart_summary->item_count > 0 ? self::$cart_summary->item_count : 0;
+
+        $item_count = 0;
+
+        if( is_object( self::$cart_summary ) ) {
+            $item_count = self::$cart_summary->item_count > 0 ? self::$cart_summary->item_count : 0;
+        }
+
+        return $item_count;
     }
 
     public static function subtotal() {

@@ -31,7 +31,7 @@ class CC_Product_Review extends CC_Model {
         $this->date = $post->post_date;
     }
 
-    public function ajax_save_review() {
+    public static function ajax_save_review() {
 
         // Validate the reCAPTCHA if it is enabeled before saving the reivew
         $site_key = CC_Admin_Setting::get_option( 'cart66_recaptcha_settings', 'site_key', false );
@@ -66,10 +66,34 @@ class CC_Product_Review extends CC_Model {
 
         $post_id = wp_insert_post( $post_data );
 
+        if ( $post_id ) {
+            self::send_email_notification( $review );
+        }
+
         CC_Log::write( "Created new customer review post: $post_id" );
         echo $post_id;
 
         die();
+    }
+
+    public static function send_email_notification( $review ) {
+
+        $recipients = CC_Admin_Setting::get_option('cart66_review_settings', 'notify_emails', false);
+
+        $from = get_bloginfo('admin_email');
+        $subject = 'New Product Review';
+        $body = 'Rating: ' . $review['rating'] . "\nName: " . $review['name'];
+        $body .= "\nEmail: " . $review['email'] . "\nSKU: " . $review['sku'];
+        $body .= "\n\n" . $review['title'] ."\n\n" . $review['content'];
+
+        $headers = ['From: ' . $review['name'] . "<$from>"];
+
+        $recipients = explode( ',', $recipients );
+
+        foreach ( $recipients as $to ) {
+            $to = trim( $to );
+            wp_mail( $to, $subject, $body, $headers );
+        }
     }
 
 }
