@@ -141,6 +141,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 = 2.1.1 = 
 
 - New: Send email notifcations when new reviews are submitted
+- Update: Cleaned up a few PHP notices
 
 = 2.1.0 =
 
