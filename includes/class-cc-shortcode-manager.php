@@ -16,6 +16,7 @@ class CC_Shortcode_Manager {
         add_shortcode( 'cc_product_reviews',      array( 'CC_Shortcode_Manager', 'cc_product_reviews' ) );
         add_shortcode( 'cc_product_review_form',  array( 'CC_Shortcode_Manager', 'cc_product_review_form' ) );
         add_shortcode( 'cc_product_gallery',      array( 'CC_Shortcode_Manager',  'cc_product_gallery') );
+        add_shortcode( 'add_to_cart',             array( 'CC_Shortcode_Manager',  'cc_product') );
     }
 
     public static function cc_product( $args, $content ) {
@@ -30,6 +31,10 @@ class CC_Shortcode_Manager {
         $display_quantity = isset($args['quantity']) ? $args['quantity'] : 'true';
         $display_price    = isset($args['price']) ? $args['price'] : 'true';
         $display_mode     = isset($args['display']) ? $args['display'] : '';
+
+        if (isset($args['item'])) {
+            $product_sku = $args['item'];
+        }
 
         CC_Log::write( "cc_product shortcode: subdomain: $subdomain :: product loader: $product_loader" );
 
