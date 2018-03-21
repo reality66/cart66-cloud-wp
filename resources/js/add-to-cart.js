@@ -22,8 +22,8 @@ jQuery(document).ready(function($) {
         }
       },
       error: function(response) {
-        if(response.status == 500) {
-          form.append('<div class="ajax_add_to_cart_message"><span class="alert alert-error ajax_button_notice"><a href="#" title="close" class="cc_close_message"><i class="icon-remove"></i></a><span class="cc_ajax_message">The product was not added to your cart. Please try again.</span></span></div>');
+        if(response.status == 500 || response.status == 503) {
+          form.append('<div class="ajax_add_to_cart_message"><span class="alert alert-error ajax_button_notice"><a href="#" title="close" class="cc_close_message"><i class="icon-remove"></i></a><span class="cc_ajax_message">There was a problem adding this item to your cart. Please try again or contact the merchant.</span></span></div>');
         }
         else {
           var order_form = form.closest('.cart66');
