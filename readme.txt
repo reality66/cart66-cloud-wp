@@ -138,6 +138,9 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 == Changelog ==
 
+= 2.2.1 =
+- Update: Allow both Cart66 Pro and Cart66 Cloud to be run side-by-side at the same time
+
 = 2.2.0 =
 - New: Backwards compatibility for the Cart66 Pro [add_to_cart] shortcodes
 - Fix: Fixed an issue with invalid product forms producing hard errors on some web hosts (e.g. Flywheel)
