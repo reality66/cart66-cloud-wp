@@ -1,5 +1,7 @@
 <?php
 
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 class CC_Shortcode_Manager {
 
     public static function init() {
@@ -16,7 +18,10 @@ class CC_Shortcode_Manager {
         add_shortcode( 'cc_product_reviews',      array( 'CC_Shortcode_Manager', 'cc_product_reviews' ) );
         add_shortcode( 'cc_product_review_form',  array( 'CC_Shortcode_Manager', 'cc_product_review_form' ) );
         add_shortcode( 'cc_product_gallery',      array( 'CC_Shortcode_Manager',  'cc_product_gallery') );
-        add_shortcode( 'add_to_cart',             array( 'CC_Shortcode_Manager',  'cc_product') );
+
+        if ( !is_plugin_active('cart66/cart66.php') ) {
+            add_shortcode( 'add_to_cart',         array( 'CC_Shortcode_Manager',  'cc_product') );
+        }
     }
 
     public static function cc_product( $args, $content ) {
