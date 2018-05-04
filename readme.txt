@@ -5,7 +5,7 @@ Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, d
 Requires at least: 4.0
 Requires PHP: 5.4
 Tested up to: 4.9
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -137,6 +137,9 @@ PageSlurp is the technology that we invented to provide a secure and PCI complia
 PCI Compliance is a set of requirements that your business needs to meet in order to accept credit card payments. If you are using Cart66 Cloud for your e-commerce, then your website is PCI compliant. If you are not using Cart66 Cloud then you need to handle all of the PCI requirements on your own. Becoming PCI compliant on your own is very expensive and challenging. For more information about PCI compliance, see [What you need to know about PCI compliance](https://cart66.com/blog/what-you-need-to-know-about-pci-compliance/ "PCI Compliance").
 
 == Changelog ==
+
+= 2.2.2 =
+- New: Add new button called Refresh Product Info to the Debug area of the settings to forcibly refresh the post meta for all Product post types
 
 = 2.2.1 =
 - Update: Allow both Cart66 Pro and Cart66 Cloud to be run side-by-side at the same time
