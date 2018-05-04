@@ -131,6 +131,7 @@ class CC_Admin_Main_Settings extends CC_Admin_Setting {
         $debug_buttons .= '<a href="' . add_query_arg( 'cc-task', 'download_log' ) . '" class="button">' . __( 'Download Log', 'cart66' ) . '</a> ';
         $debug_buttons .= '<a href="' . add_query_arg( 'cc-task', 'reset_log' ) . '" class="button">' . __( 'Reset Log File', 'cart66' ) . '</a> ';
         $debug_buttons .= '<a href="' . add_query_arg( 'cc-task', 'test_remote_calls' ) . '" class="button">' . __( 'Test Remote Calls', 'cart66' ) . '</a> ';
+        $debug_buttons .= '<a href="' . add_query_arg( 'cc-task', 'refresh_products' ) . '" class="button">' . __( 'Refresh Product Info', 'cart66' ) . '</a> ';
         $debug_buttons .= '</p>';
 
         if ( $results = CC_Flash_Data::get( 'remote_call_test_results' ) ) {

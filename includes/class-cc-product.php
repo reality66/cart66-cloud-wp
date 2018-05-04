@@ -16,6 +16,21 @@ class CC_Product extends CC_Model {
         $this->prefix   = '_cc_product_';
     }
 
+    public static function refresh_all() {
+        $args = array(
+            'post_type' => 'cc_product'
+        );
+        $posts = get_posts( $args );
+        $skus = array_map(function($post) {
+            return get_post_meta($post->ID, '_cc_product_sku')[0];
+        }, $posts);
+
+        foreach($skus as $sku) {
+            $product = new CC_Product();
+            $product->update_info( $sku );
+        }
+    }
+
     /**
      * Set the WordPress post and the Cart66 Cloud product id.
      *
@@ -93,6 +108,8 @@ class CC_Product extends CC_Model {
             'posts_per_page' => 1
         );
         $posts = get_posts( $args );
+        
+        CC_Log::write( 'PRODUCT POSTS: ' . print_r( $posts, true ) );
 
         if ( count( $posts ) ) {
             $post = array_shift( $posts );
