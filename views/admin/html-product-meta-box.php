@@ -8,34 +8,45 @@
     wp_nonce_field( 'cc_product_meta_box', 'cc_product_meta_box_nonce' ); 
 ?>
 
-<script langage="text/javascript">
-    jQuery(document).ready(function($) {
+<style type="text/css">
+    .choices .choices__inner {
+        min-height: auto;
+        padding-right: 0;
+        width: 90%;
+    }
 
-        $('#_cc_product_json').select2({
-            width: '100%',
-            minimumInputLength: 2,
-            allowClear: true,
-            ajax: {
-                url: ajaxurl,
-                dataType: 'json',
-                data: function (term, page) {
-                    return {
-                        action: 'cc_ajax_product_search',
-                        search: term
-                    };
-                },
-                results: function (data, page) {
-                  return { results: data };
-                }
-            }
-        });
+    .choices .choices__list--single {
+        width: 90%;
+    }
 
+    .choices .choices__item--selectable {
+        width: 90%;
+    }
 
-    });
-</script>
+    .choices[data-type*=select-one]:after {
+        right: 35px;
+    }
+
+    .choices .choices__list--dropdown {
+        width: 93%;
+    }
+</style>
 
 <div class="cc_meta_box_option">
-    <input type="hidden" name="_cc_product_json" id="_cc_product_json" data-placeholder="<?php echo $value; ?>" />
+    <select name="_cc_product_sku" id="_cc_product_sku" class="choices">
+        <option placeholder value="">Choose Product</option>
+        <?php foreach ($cc_products as $cc_product): ?>
+            <?php if ($cc_product["sku"] == $selected_product_sku): ?>
+                <option value="<?php echo $cc_product["sku"] ?>" selected>
+                    <?php echo $cc_product["name"] ?>
+                </option>
+            <?php else: ?>
+                <option value="<?php echo $cc_product["sku"] ?>">
+                    <?php echo $cc_product["name"] ?>
+                </option>
+            <?php endif ?>
+        <?php endforeach ?>
+    </select>
 </div>
 
 <div class="cc_meta_box_option">
@@ -48,3 +59,10 @@
         </option>
     </select>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var choices = new Choices($(".choices")[0], {
+        });
+    });
+</script>
