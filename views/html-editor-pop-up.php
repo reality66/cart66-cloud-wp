@@ -7,42 +7,51 @@
     }
 </style>
 
+<style type="text/css">
+    .choices .choices__inner {
+        min-height: auto;
+        padding-right: 0;
+        width: 90%;
+    }
+
+    .choices .choices__list--single {
+        width: 90%;
+    }
+
+    .choices .choices__item--selectable {
+        width: 90%;
+    }
+
+    .choices[data-type*=select-one]:after {
+        right: 35px;
+    }
+
+    .choices .choices__list--dropdown {
+        width: 93%;
+    }
+</style>
+
 <script type="text/javascript">
     function cc_insert_product_shortcode(){
-        var product_info = JSON.parse(jQuery('#cc_product_id').val());
+        var product_sku = jQuery('#cc_product_sku').val();
         var display_type = jQuery("#display_type").val();
         var display_quantity = jQuery("#display_quantity").is(":checked") ? 'true' : 'false';
         var display_price = jQuery("#display_price").is(":checked") ? 'true' : 'false';
 
-        if(product_info.length == 0 || product_info == "0" || product_info == ""){
+        if(product_sku.length == 0 || product_sku == "0" || product_sku == ""){
             alert("<?php _e("Please select a product", "cart66") ?>");
             return;
         }
-        console.log(product_info);
-        window.send_to_editor("[cc_product sku=\"" + product_info.sku + "\" display=\"" + display_type + "\" quantity=\"" + display_quantity + "\" price=\"" + display_price + "\"]");
+        console.log(product_sku);
+        window.send_to_editor("[cc_product sku=\"" + product_sku + "\" display=\"" + display_type + "\" quantity=\"" + display_quantity + "\" price=\"" + display_price + "\"]");
     }
 
-    jQuery(document).ready(function($) {
-        $('#cc_product_id').select2({
-            width: '100%',
-            minimumInputLength: 2,
-            allowClear: true,
-            ajax: {
-                url: ajaxurl,
-                dataType: 'json',
-                data: function (term, page) {
-                    return {
-                        action: 'cc_ajax_product_search',
-                        search: term
-                    };
-                },
-                results: function (data, page) {
-                  return { results: data };
-                }
-            }
-        });
-    });
 </script>
+
+<?php
+    $cloud_product = new CC_Cloud_Product();
+    $cc_products = $cloud_product->get_products();
+?>
 
 <div id="cc_editor_pop_up" style="display:none;">
     <div id="cart66_pop_up" class="wrap">
@@ -56,9 +65,16 @@
                 <table class="form-table">
                     <tbody>
                         <tr valign="top">
-                            <th scope="row"><label for="cc_product_id">Products</label></th>
+                            <th scope="row"><label for="cc_product_sku">Products</label></th>
                             <td>
-                                <input type="hidden" name="cc_product_id" id="cc_product_id" value="" />
+                                <select name="cc_product_sku" id="cc_product_sku" class="choices">
+                                    <option placeholder value="">Choose Product</option>
+                                    <?php foreach ($cc_products as $cc_product): ?>
+                                        <option value="<?php echo $cc_product["sku"] ?>">
+                                            <?php echo $cc_product["name"] ?>
+                                        </option>
+                                    <?php endforeach ?>
+                                </select>
                             </td>
                         </tr>
                         <tr valign="top">
@@ -101,3 +117,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var choices = new Choices($(".choices")[0], {
+        });
+    });
+</script>
