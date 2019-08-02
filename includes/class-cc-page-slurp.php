@@ -81,6 +81,12 @@ class CC_Page_Slurp {
             $title = $new_title;
         }
 
+        // Look for All In One SEO plugin and set the title if it's in use
+        add_filter( 'aioseop_title', function() {
+            $title_value = cc_get( 'cc_page_title', 'text_field' );
+            return $title_value;
+        });
+
         CC_Log::write( 'set_page_title result: ' . print_r( $title, true ) );
 
         return $title;
