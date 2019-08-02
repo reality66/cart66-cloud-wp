@@ -2,14 +2,14 @@
 /*
 Plugin Name: Cart66 Cloud
 Plugin URI: http://cart66.com
-Description: Secure Ecommerce For WordPress.
-Version: 2.3.1
+Description: Ecommerce Without The Clutter
+Version: 2.3.2
 Author: Reality66
 Author URI: http://www.reality66.com
 
 -------------------------------------------------------------------------
 Cart66 Cloud
-Copyright 2017  reality66
+Copyright 2019  reality66
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

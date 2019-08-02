@@ -3,9 +3,9 @@ Contributors: reality66,
 Donate link: https://cart66.com
 Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, downloadable, sell, inventory, shipping, tax, donations products, sales
 Requires at least: 4.0
-Requires PHP: 5.4
-Tested up to: 5.2.1
-Stable tag: 2.3.1
+Requires PHP: 7.0
+Tested up to: 5.2.2
+Stable tag: 2.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
