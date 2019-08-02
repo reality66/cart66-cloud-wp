@@ -140,4 +140,29 @@ class CC_Cloud_Product {
         return $product_data;
     }
 
+    public static function find_by_sku( $sku ) {
+        self::init();
+
+        CC_Log::write( "CC_Cloud_Product query param: " . print_r( $sku, true ) );
+        $url = self::$cloud->api . 'products/sku/' . urlencode( $sku );
+
+        CC_Log::write( "Search the cloud for products with this URL: $url" );
+
+        $headers = self::$cloud->basic_auth_header( array( 'Accept' => 'application/json' ) );
+
+        if ( $headers ) {
+            $response = wp_remote_get( $url, $headers );
+
+            if( self::$cloud->response_ok( $response ) ) {
+                $product = json_decode( $response['body'], true );
+            } else {
+                CC_Log::write( "Product search failed: $url :: " . print_r( $response, true ) );
+                throw new CC_Exception_API( "Failed to retrieve products from Cart66 Cloud" );
+            }
+        }
+
+        return $product;
+    }
+
+
 }

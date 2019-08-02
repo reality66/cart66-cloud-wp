@@ -2,51 +2,15 @@
 
 add_action( 'load-post.php',     'cc_product_meta_box_setup' );
 add_action( 'load-post-new.php', 'cc_product_meta_box_setup' );
-add_action( 'wp_ajax_cc_ajax_product_search', 'cc_ajax_product_search' );
-
-function cc_ajax_product_search( ) {
-    CC_Log::write( 'AJAX product search: ' . print_r( $_REQUEST['search'], true ) );
-    $products = CC_Cloud_Product::search( $_REQUEST['search'] );
-    $options = array(); 
-
-    /*
-    Product info from search results: Array
-    (
-        [id] => 54d3e70dd2a57d1adc002eb1
-        [name] => Ooma HD2 Handset
-        [sku] => hd2
-        [price] => 60.0
-        [on_sale] => 
-        [sale_price] => 
-        [currency] => $
-        [expires_after] => 
-        [formatted_price] => $60.00
-        [formatted_sale_price] => $
-        [digital] => 
-        [type] => product
-        [status] => available
-    )
-     */
-    foreach ( $products as $p ) {
-        CC_Log::write( 'Product info from search results: ' . print_r( $p, true ) );
-        $options[] = array( 
-            'id' => json_encode( $p ),
-            'text' => $p['name'] 
-        );
-    }
-
-    echo json_encode( $options );
-    die();
-}
 
 function cc_product_meta_box_setup() {
     add_action( 'add_meta_boxes', 'cc_add_product_meta_box' );
     add_action( 'save_post', 'cc_save_product_meta_box', 10, 2 );
     
     $url = cc_url();
-    wp_enqueue_style( 'select2', $url .'resources/css/select2.css' );
-    wp_enqueue_script( 'select2', $url . 'resources/js/select2.min.js' );
-
+    //wp_enqueue_style( 'choices-base', 'https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css');
+    wp_enqueue_style( 'choices', 'https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css');
+    wp_enqueue_script( 'choices', 'https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js');
 }
 
 function cc_add_product_meta_box() {
@@ -67,18 +31,17 @@ function cc_add_product_meta_box() {
  */
 function cc_product_meta_box_render( $post, $box ) {
 
-    $product_name = get_post_meta( $post->ID, '_cc_product_name', true );
+    $selected_product_sku = get_post_meta( $post->ID, '_cc_product_sku', true );
     $layout = get_post_meta( $post->ID, '_cc_product_layout', true );
-
-    if ( empty( $value ) ) {
-        $value = 'Select Product';
-    } 
+    $cloud_product = new CC_Cloud_Product();
+    $cc_products = $cloud_product->get_products();
 
     $data = array( 
         'post' => $post, 
         'box' => $box,
-        'value' => $product_name,
-        'layout' => $layout
+        'selected_product_sku' => $selected_product_sku,
+        'layout' => $layout,
+        'cc_products' => $cc_products
     );
 
     $template = CC_PATH . 'views/admin/html-product-meta-box.php';
@@ -125,29 +88,29 @@ function cc_store_meta_box_values( $post_id ) {
     $json_key = '_cc_product_json';
     $prefix   = '_cc_product_';
 
-    // Get the posted data and sanitize it for use as an HTML class.
-    $product_info = ( isset( $_POST[ '_cc_product_json' ] ) ? sanitize_text_field( $_POST[ '_cc_product_json' ] ) : '' );
-    $product_info = stripslashes( $product_info );
-    $product_info = json_decode( $product_info, true );
+    if ( isset( $_POST[ '_cc_product_sku' ] ) && strlen( $_POST[ '_cc_product_sku' ] ) > 0 ) {
+        $cc_product = CC_Cloud_Product::find_by_sku($_POST[ '_cc_product_sku' ]);
+        CC_Log::write( print_r($cc_product, true) );
+    }
 
-    if ( is_array( $product_info ) ) {
+    if ( is_array( $cc_product ) ) {
 
         // Get the meta value of the custom field key.
         $old_value = get_post_meta( $post_id, $json_key, true );
 
         if ( '' == $old_value ) {
             // If a new meta value was added and there was no previous value, add it.
-            add_post_meta( $post_id, $json_key, $product_info, true );
-            foreach( $product_info as $key => $value ) {
+            add_post_meta( $post_id, $json_key, $cc_product, true );
+            foreach( $cc_product as $key => $value ) {
                 add_post_meta( $post_id, $prefix . $key, $value, true );
             }
-        } elseif ( $product_info != $old_value ) {
+        } elseif ( $cc_product != $old_value ) {
             // If the new meta value does not match the old value, update it.
-            update_post_meta( $post_id, $json_key, $product_info );
-            foreach( $product_info as $key => $value ) {
+            update_post_meta( $post_id, $json_key, $cc_product );
+            foreach( $cc_product as $key => $value ) {
                 update_post_meta( $post_id, $prefix . $key, $value );
             }
-        } elseif ( '' == $product_info && $old_value ) {
+        } elseif ( '' == $cc_product && $old_value ) {
             // TODO: $product_info will never be empty here because in order to get here it has to be an array
             // If there is no new meta value but an old value exists, delete it.
             delete_post_meta( $post_id, $json_key );
