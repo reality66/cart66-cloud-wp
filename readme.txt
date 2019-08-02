@@ -138,6 +138,9 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 == Changelog ==
 
+= 2.3.2 =
+- New: When All In One SEO is installed, use the aioseop_title hook to set title of slurp page 
+
 = 2.3.1 =
 - Fix: Issue with product selection when inserting shortcode into page from the
   WordPress admin
