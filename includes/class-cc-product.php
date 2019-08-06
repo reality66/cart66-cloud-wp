@@ -26,6 +26,10 @@ class CC_Product extends CC_Model {
         }, $posts);
 
         foreach($skus as $sku) {
+            if (strlen($sku) <= 0) {
+                continue;
+            }
+
             $product = new CC_Product();
             $product->update_info( $sku );
         }
