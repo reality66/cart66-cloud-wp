@@ -140,6 +140,8 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 = 2.3.2 =
 - New: When All In One SEO is installed, use the aioseop_title hook to set title of slurp page 
+- Fix: Refresh Product Info button sometimes failed when Products didn't have a
+  product associated with it or an unknown SKU
 
 = 2.3.1 =
 - Fix: Issue with product selection when inserting shortcode into page from the
