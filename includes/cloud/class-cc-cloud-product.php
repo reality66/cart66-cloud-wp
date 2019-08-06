@@ -157,7 +157,6 @@ class CC_Cloud_Product {
                 $product = json_decode( $response['body'], true );
             } else {
                 CC_Log::write( "Product search failed: $url :: " . print_r( $response, true ) );
-                throw new CC_Exception_API( "Failed to retrieve products from Cart66 Cloud" );
             }
         }
 
