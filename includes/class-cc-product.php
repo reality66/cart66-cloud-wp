@@ -110,17 +110,15 @@ class CC_Product extends CC_Model {
             'post_type' => 'cc_product',
             'meta_key' => '_cc_product_sku',
             'meta_value' => $sku,
-            'posts_per_page' => 1
+            'numberposts' => -1
         );
         $posts = get_posts( $args );
         
         CC_Log::write( 'PRODUCT POSTS: ' . print_r( $posts, true ) );
 
-        if ( count( $posts ) ) {
-            $post = array_shift( $posts );
+        foreach ($posts as $post) {
             if ( is_object( $post ) && $post->ID > 0 ) {
                 $cc_product = CC_Cloud_Product::find_by_sku( $sku );
-                // CC_Log::write( 'Updating product info for post id: ' . $post->ID . " :: " . print_r( $results, true ) );
                 if( is_array( $cc_product ) ) {
                     update_post_meta( $post->ID, $this->json_key, $cc_product );
                     foreach( $cc_product as $key => $value ) {

@@ -5,7 +5,7 @@ Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, d
 Requires at least: 4.0
 Requires PHP: 7.0
 Tested up to: 5.2.2
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,9 +138,11 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 == Changelog ==
 
+= 2.3.4 =
+- Fix: Yet another fix related to product post types and their associations with product SKUs in the cloud.  If more than 1 product post type was associated with the same product SKU in the cloud, the Refresh Product Info process would only update the first one.  This fix makes it so all of them get updated as they should.
+
 = 2.3.3 =
-- Fix: Another fix for an issue related to refreshing product info from the
-  cloud
+- Fix: Another fix for an issue related to refreshing product info from the cloud
 
 = 2.3.2 =
 - New: When All In One SEO is installed, use the aioseop_title hook to set title of slurp page 
