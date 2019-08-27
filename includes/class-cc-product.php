@@ -18,7 +18,8 @@ class CC_Product extends CC_Model {
 
     public static function refresh_all() {
         $args = array(
-            'post_type' => 'cc_product'
+            'post_type' => 'cc_product',
+            'numberposts' => -1
         );
         $posts = get_posts( $args );
         $skus = array_map(function($post) {
