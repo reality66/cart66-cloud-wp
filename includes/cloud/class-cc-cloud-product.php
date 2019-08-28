@@ -49,7 +49,13 @@ class CC_Cloud_Product {
         if ( is_array( self::$products ) ) {
             // CC_Log::write('Called get_products() :: Reusing static product data');
         } else {
-            $this->load_all();
+            try {
+                $this->load_all();
+            }
+            catch ( CC_Exception_API $e ) {
+                CC_Log::write("CC_Cloud_Product::get_products failed to load product info from the cloud - caught API exception");
+            }
+            
         }
 
         return self::$products;
