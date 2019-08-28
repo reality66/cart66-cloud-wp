@@ -25,6 +25,19 @@ class CC_Page_Slurp {
 
         if ( $is_slurp ) {
             CC_Log::write( 'This is a page slurp! Setting filters: the_title' );
+
+            // Look for All In One SEO plugin and set the title if it's in use
+            add_filter( 'aioseop_title', function() {
+                $title_value = cc_get( 'cc_page_title', 'text_field' );
+                return $title_value;
+            });
+
+            // Look for Yoast SEO plugin and set the title if it's in use
+            add_filter( 'wpseo_title', function( $title_value ) {
+                $title_value = cc_get( 'cc_page_title', 'text_field' );
+                return $title_value;
+            });
+
             add_filter( 'the_title', 'CC_Page_Slurp::set_page_heading' );
             add_filter( 'document_title_parts', 'CC_Page_Slurp::set_page_title', 30, 2 );
             add_filter( 'wp_title', 'CC_Page_Slurp::set_page_title', 30, 2 );
@@ -80,12 +93,6 @@ class CC_Page_Slurp {
         else {
             $title = $new_title;
         }
-
-        // Look for All In One SEO plugin and set the title if it's in use
-        add_filter( 'aioseop_title', function() {
-            $title_value = cc_get( 'cc_page_title', 'text_field' );
-            return $title_value;
-        });
 
         CC_Log::write( 'set_page_title result: ' . print_r( $title, true ) );
 

@@ -138,6 +138,9 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 == Changelog ==
 
+= 2.3.5 =
+- New: When Yoast SEO is installed, use the wpseo_title hook to set title of slurp page 
+
 = 2.3.4 =
 - Fix: Yet another fix related to product post types and their associations with product SKUs in the cloud.  If more than 1 product post type was associated with the same product SKU in the cloud, the Refresh Product Info process would only update the first one.  This fix makes it so all of them get updated as they should.
 
