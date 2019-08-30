@@ -9,31 +9,31 @@
 ?>
 
 <style type="text/css">
-    .choices .choices__inner {
+    .c66-choices .choices__inner {
         min-height: auto;
         padding-right: 0;
         width: 90%;
     }
 
-    .choices .choices__list--single {
+    .c66-choices .choices__list--single {
         width: 90%;
     }
 
-    .choices .choices__item--selectable {
+    .c66-choices .choices__item--selectable {
         width: 90%;
     }
 
-    .choices[data-type*=select-one]:after {
+    .c66-choices[data-type*=select-one]:after {
         right: 35px;
     }
 
-    .choices .choices__list--dropdown {
+    .c66-choices .choices__list--dropdown {
         width: 93%;
     }
 </style>
 
 <div class="cc_meta_box_option">
-    <select name="_cc_product_sku" id="_cc_product_sku" class="choices">
+    <select name="_cc_product_sku" id="_cc_product_sku" class="c66-choices">
         <option placeholder value="">Choose Product</option>
         <?php foreach ($cc_products as $cc_product): ?>
             <?php if ($cc_product["sku"] == $selected_product_sku): ?>
@@ -59,10 +59,3 @@
         </option>
     </select>
 </div>
-
-<script>
-    $(document).ready(function() {
-        var choices = new Choices($(".choices")[0], {
-        });
-    });
-</script>

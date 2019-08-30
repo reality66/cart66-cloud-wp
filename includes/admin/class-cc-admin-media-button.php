@@ -3,7 +3,6 @@
 class CC_Admin_Media_Button {
 
     public static function add_media_button( $context ) {
-        // CC_Log::write( 'Called add_media_button. Context: ' . print_r( $context, true ) );
 
         $style = <<<EOL
 <style type="text/css">
@@ -43,12 +42,6 @@ EOL;
         $view .= CC_View::get(CC_PATH . 'views/html-review-pop-up.php');
 
         echo $view;
-    }
-
-    public static function enqueue_select2() {
-        $url = cc_url();
-        wp_enqueue_style( 'select2', $url .'resources/css/select2.css' );
-        wp_enqueue_script( 'select2', $url . 'resources/js/select2.min.js' );
     }
 
 }

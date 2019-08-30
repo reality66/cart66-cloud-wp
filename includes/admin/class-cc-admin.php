@@ -17,6 +17,9 @@ class CC_Admin {
 
         // Add the cart66 product insert media button to the editor
         add_action( 'current_screen', array($this, 'add_media_button_to_editor' ) );
+        
+        // Initialize the choices dropdowns
+        add_action( 'current_screen', array( CC_Scripts, 'enqueue_choices' ) );
 
         // Check for cart66 theme support
         add_action( 'after_setup_theme', array( $this, 'check_theme_support' ) );
@@ -92,7 +95,6 @@ class CC_Admin {
             // CC_Log::write( 'Adding media button. Screen base: ' . $screen->base );
             add_action('media_buttons', array('CC_Admin_Media_Button', 'add_media_button'));
             add_action('admin_footer',  array('CC_Admin_Media_Button', 'add_media_button_popup'));
-            add_action('admin_enqueue_scripts', array('CC_Admin_Media_Button', 'enqueue_select2'));
         }
     }
 

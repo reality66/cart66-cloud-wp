@@ -6,11 +6,6 @@ add_action( 'load-post-new.php', 'cc_product_meta_box_setup' );
 function cc_product_meta_box_setup() {
     add_action( 'add_meta_boxes', 'cc_add_product_meta_box' );
     add_action( 'save_post', 'cc_save_product_meta_box', 10, 2 );
-    
-    $url = cc_url();
-    //wp_enqueue_style( 'choices-base', 'https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css');
-    wp_enqueue_style( 'choices', 'https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css');
-    wp_enqueue_script( 'choices', 'https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js');
 }
 
 function cc_add_product_meta_box() {
