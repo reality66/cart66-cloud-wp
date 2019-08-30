@@ -8,8 +8,8 @@ class CC_Cloud_API_V1 {
     public $secret_key;
 
     public function __construct() {
-        $this->protocol   = 'https://';
-        $this->app_domain = 'cart66.com';
+        $this->protocol   = 'http://';
+        $this->app_domain = 'cart66-cloud.test';
         $this->api        = $this->protocol . 'api.' . $this->app_domain . '/1/';
         $this->secure     = $this->protocol . 'secure.' . $this->app_domain . '/';
         $this->secret_key = null;
