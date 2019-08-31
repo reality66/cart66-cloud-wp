@@ -141,7 +141,7 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 = 2.3.6 =
 - New: Add option to show Add To Cart button in catalog view
 - New: When Yoast SEO is installed, use the wpseo_title hook to set title of slurp page 
-- Fix: Catch API connection error in WordPress admin
+- Fix: Catch API connection exception before anything bad happens
 
 = 2.3.5 =
 - Update/Fix: Remove all references to the select2 library, which was causing issues with some themes and plugins.
