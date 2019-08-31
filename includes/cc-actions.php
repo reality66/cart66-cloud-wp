@@ -121,6 +121,12 @@ function cc_enqueue_cart66_styles() {
     if ( 'no' != $default_css ) {
         wp_enqueue_style( 'cart66-templates', $url . 'templates/css/cart66-templates.css', ['featherlight-styles'] );
     }
+
+    // Enclude CSS to make Add To Cart button match View Details button in catalog view
+    $button_css = CC_Admin_Setting::get_option( 'cart66_main_settings', 'catalog_button_style');
+    if ( 'cc-button-primary' == $button_css ) {
+        wp_enqueue_style( 'cart66-catalog-button', $url . 'templates/css/catalog-cart-button.css');
+    }
 }
 
 /**

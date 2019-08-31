@@ -36,6 +36,26 @@ class CC_Product extends CC_Model {
         }
     }
 
+    public static function has_cached_options( $post_id ) {
+        $has_options = false;
+
+        $keys = [
+            '_cc_product_choice_options',
+            '_cc_product_text_options',
+            '_cc_product_file_options'
+        ];
+
+        foreach ($keys as $key ) {
+           $options = get_post_meta( $post_id, $key, true );
+           if (! empty($options) ) {
+                $has_options = true;
+                break;
+           }
+        }
+
+        return $has_options;
+    }
+
     /**
      * Set the WordPress post and the Cart66 Cloud product id.
      *

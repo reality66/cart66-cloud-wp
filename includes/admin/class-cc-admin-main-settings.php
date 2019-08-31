@@ -37,6 +37,7 @@ class CC_Admin_Main_Settings extends CC_Admin_Setting {
             'product_post_types' => '',
             'shop_name' => 'Shop',
             'catalog_button_style' => 'cc-button-primary',
+            'catalog_add_to_cart' => '',
             'custom_css' => '',
             'default_css' => 'yes',
             'debug' => ''
@@ -114,6 +115,14 @@ class CC_Admin_Main_Settings extends CC_Admin_Setting {
         $catalog_buttons->set_selected( $option_values['catalog_button_style'] );
         $main_section->add_field( $catalog_buttons );
 
+        // Show add to cart button in catalog view
+        $catalog_add_button = new CC_Admin_Settings_Radio_Buttons( __( 'Add To Cart From Catalog View', 'cart66' ), 'catalog_add_button' );
+        $catalog_add_button->new_option( __( 'No, only show the "View Details" button', 'cart66' ), 0, true );
+        $catalog_add_button->new_option( __( 'Yes, show both "View Details" and "Add To Cart" buttons', 'cart66' ), 1 );
+        $catalog_add_button->set_selected( $option_values['catalog_add_button'] );
+        $catalog_add_button->description = ( 'When using the catalog shortcode, would you like to show an Add To Cart button for products that do not have any variations?' );
+        $main_section->add_field( $catalog_add_button );
+
         // Add custom css field
         $css = $option_values[ 'custom_css' ];
         $custom_css = new CC_Admin_Settings_Text_Area( __('Custom CSS', 'cart66'), 'custom_css', $css );
@@ -180,7 +189,7 @@ class CC_Admin_Main_Settings extends CC_Admin_Setting {
         $view = new CC_Admin_Settings_Text_Field( __( 'View Button', 'cart66'), 'view', $view_value );
         $view->description = __( 'The text in the button to view the details of the product ', 'cart66' );
         $labels_section->add_field( $view );
-        
+
         $this->add_section( $labels_section );
         
         // Register all of the settings

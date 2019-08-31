@@ -23,9 +23,25 @@
         </p>
     <?php endif; ?>
 
-    <a class="<?php echo CC_Admin_Setting::get_option('cart66_main_settings', 'catalog_button_style', 'cc-button-primary'); ?>" 
-       href="<?php echo get_permalink(); ?>" 
-       title="<?php the_title(); ?>"><?php echo CC_Admin_Setting::get_option( 'cart66_labels', 'view'); ?></a>
+    <?php if ( CC_Admin_Setting::get_option( 'cart66_main_settings', 'catalog_add_button' ) && ! CC_Product::has_cached_options( $post->ID ) ): ?>
+        <section class="cc-product-catalog-buttons">
+            <div class="cc-product-catalog-button-primary">
+                <a class="<?php echo CC_Admin_Setting::get_option('cart66_main_settings', 'catalog_button_style', 'cc-button-primary'); ?>" 
+                   href="<?php echo get_permalink(); ?>" 
+                   title="<?php the_title(); ?>"><?php echo CC_Admin_Setting::get_option( 'cart66_labels', 'view'); ?></a>
+            </div>
+            <div class="cc-product-catalog-button-secondary">
+                <?php 
+                    $sku = get_post_meta( $post->ID, '_cc_product_sku', true );
+                    echo do_shortcode('[cc_product sku="' . $sku . '" display="naked" quantity="false" price="false"]'); 
+                ?>
+            </div>
+        </section>
+    <?php else: ?>
+        <a class="<?php echo CC_Admin_Setting::get_option('cart66_main_settings', 'catalog_button_style', 'cc-button-primary'); ?> solo" 
+                   href="<?php echo get_permalink(); ?>" 
+                   title="<?php the_title(); ?>"><?php echo CC_Admin_Setting::get_option( 'cart66_labels', 'view'); ?></a>
+    <?php endif; ?>
 
 </li>
 
