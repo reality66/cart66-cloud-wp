@@ -1,13 +1,4 @@
 <style type="text/css">
-    .select2-drop-mask {
-        z-index: 2000001;
-    }
-    .select2-drop {
-        z-index: 2000002;
-    }
-</style>
-
-<style type="text/css">
     .choices .choices__inner {
         min-height: auto;
         padding-right: 0;
@@ -67,7 +58,7 @@
                         <tr valign="top">
                             <th scope="row"><label for="cc_product_sku">Products</label></th>
                             <td>
-                                <select name="cc_product_sku" id="cc_product_sku" class="choices">
+                                <select name="cc_product_sku" id="cc_product_sku" class="c66-choices">
                                     <option placeholder value="">Choose Product</option>
                                     <?php foreach ($cc_products as $cc_product): ?>
                                         <option value="<?php echo $cc_product["sku"] ?>">
@@ -117,10 +108,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        var choices = new Choices($(".choices")[0], {
-        });
-    });
-</script>

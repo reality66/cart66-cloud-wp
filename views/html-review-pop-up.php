@@ -1,52 +1,27 @@
-<style type="text/css">
-    .select2-drop-mask {
-        z-index: 2000001;
-    }
-    .select2-drop {
-        z-index: 2000002;
-    }
-</style>
-
 <script type="text/javascript">
     function cc_insert_review_shortcode(){
-        var product_info = JSON.parse(jQuery('#cc_product_id_review').val());
+        var product_sku = jQuery('#cc_product_sku_review').val();
         var display_type = jQuery("#display_type_review").val();
 
-        if(product_info.length == 0 || product_info == "0" || product_info == ""){
+        if(product_sku.length == 0 || product_sku == "0" || product_sku == ""){
             alert("<?php _e("Please select a product", "cart66") ?>");
             return;
         }
-        console.log(product_info);
+        console.log(product_sku);
 
         if ( display_type == 'display' ) {
-            window.send_to_editor("[cc_product_reviews sku=\"" + product_info.sku + "\"]");
+            window.send_to_editor("[cc_product_reviews sku=\"" + product_sku + "\"]");
         }
         else {
-            window.send_to_editor("[cc_product_review_form sku=\"" + product_info.sku + "\"]");
+            window.send_to_editor("[cc_product_review_form sku=\"" + product_sku + "\"]");
         }
     }
-
-    jQuery(document).ready(function($) {
-        $('#cc_product_id_review').select2({
-            width: '100%',
-            minimumInputLength: 2,
-            allowClear: true,
-            ajax: {
-                url: ajaxurl,
-                dataType: 'json',
-                data: function (term, page) {
-                    return {
-                        action: 'cc_ajax_product_search',
-                        search: term
-                    };
-                },
-                results: function (data, page) {
-                  return { results: data };
-                }
-            }
-        });
-    });
 </script>
+
+<?php
+    $cloud_product = new CC_Cloud_Product();
+    $cc_products = $cloud_product->get_products();
+?>
 
 <div id="cc_review_pop_up" style="display:none;">
     <div id="cart66_revew_pop_up" class="wrap">
@@ -60,9 +35,16 @@
                 <table class="form-table">
                     <tbody>
                         <tr valign="top">
-                            <th scope="row"><label for="cc_product_id_review">Product</label></th>
+                            <th scope="row"><label for="cc_product_sku_review">Product</label></th>
                             <td>
-                                <input type="hidden" name="cc_product_id_review" id="cc_product_id_review" value="" />
+                                <select name="cc_product_sku_review" id="cc_product_sku_review" class="c66-choices">
+                                    <option placeholder value="">Choose Product</option>
+                                    <?php foreach ($cc_products as $cc_product): ?>
+                                        <option value="<?php echo $cc_product["sku"] ?>">
+                                            <?php echo $cc_product["name"] ?>
+                                        </option>
+                                    <?php endforeach ?>
+                                </select>
                             </td>
                         </tr>
                         <tr valign="top">

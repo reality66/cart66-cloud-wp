@@ -5,7 +5,7 @@ Tags: ecommerce, e-commerce, shopping, cart, store, cart66, download, digital, d
 Requires at least: 4.0
 Requires PHP: 7.0
 Tested up to: 5.2.2
-Stable tag: 2.3.4
+Stable tag: 2.3.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,8 +138,13 @@ PCI Compliance is a set of requirements that your business needs to meet in orde
 
 == Changelog ==
 
-= 2.3.5 =
+= 2.3.6 =
+- New: Add option to show Add To Cart button in catalog view
 - New: When Yoast SEO is installed, use the wpseo_title hook to set title of slurp page 
+- Fix: Catch API connection error in WordPress admin
+
+= 2.3.5 =
+- Update/Fix: Remove all references to the select2 library, which was causing issues with some themes and plugins.
 
 = 2.3.4 =
 - Fix: Yet another fix related to product post types and their associations with product SKUs in the cloud.  If more than 1 product post type was associated with the same product SKU in the cloud, the Refresh Product Info process would only update the first one.  This fix makes it so all of them get updated as they should.
