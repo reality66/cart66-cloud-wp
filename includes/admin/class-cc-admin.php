@@ -19,7 +19,7 @@ class CC_Admin {
         add_action( 'current_screen', array($this, 'add_media_button_to_editor' ) );
         
         // Initialize the choices dropdowns
-        add_action( 'current_screen', array( CC_Scripts, 'enqueue_choices' ) );
+        add_action( 'current_screen', array( 'CC_Scripts', 'enqueue_choices' ) );
 
         // Check for cart66 theme support
         add_action( 'after_setup_theme', array( $this, 'check_theme_support' ) );
