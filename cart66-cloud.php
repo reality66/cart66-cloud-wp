@@ -3,7 +3,7 @@
 Plugin Name: Cart66 Cloud
 Plugin URI: http://cart66.com
 Description: Ecommerce Without The Clutter
-Version: 2.3.6
+Version: 2.3.7
 Author: Reality66
 Author URI: http://www.reality66.com
 

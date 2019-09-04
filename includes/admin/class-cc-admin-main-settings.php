@@ -37,7 +37,7 @@ class CC_Admin_Main_Settings extends CC_Admin_Setting {
             'product_post_types' => '',
             'shop_name' => 'Shop',
             'catalog_button_style' => 'cc-button-primary',
-            'catalog_add_to_cart' => '',
+            'catalog_add_button' => '',
             'custom_css' => '',
             'default_css' => 'yes',
             'debug' => ''
